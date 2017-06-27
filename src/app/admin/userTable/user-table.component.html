@@ -1,0 +1,32 @@
+<admin-panel-navigation></admin-panel-navigation>
+
+<button style="margin-bottom: 30px" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+  Add user
+</button>
+
+<button style="margin-bottom: 30px" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+  Update user
+</button>
+
+<button style="margin-bottom: 30px" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+  Delete user
+</button>
+
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Phone number</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Reg date</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let user of users">
+    <th>{{user.email}}</th>
+    <th>{{user.phoneNumber}}</th>
+    <th>{{user.firstName}}</th>
+    <th>{{user.lastName}}</th>
+    <th>{{user.regDate}}</th>
+  </tr>
+</table>
