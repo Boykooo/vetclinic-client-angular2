@@ -14,7 +14,8 @@ export class UserTableComponent implements OnInit {
 
   constructor(
     private userService: UserService
-  ) { }
+  )
+  { }
 
   ngOnInit(): void {
     this.users = this.userService.getAllUsers();

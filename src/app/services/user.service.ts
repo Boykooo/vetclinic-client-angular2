@@ -1,6 +1,7 @@
 
 import {Injectable} from "@angular/core";
 import {User} from "../entity/user";
+import {Http} from "@angular/http";
 
 const mockUsers: User[] = [
   {email: "test", lastName: "test", phoneNumber: "test", regDate: new Date('10/10/17'), firstName: "test"},
@@ -9,7 +10,12 @@ const mockUsers: User[] = [
 
 @Injectable()
 export class UserService{
-  getAllUsers(): User[] {
-    return mockUsers;
+
+  constructor(
+    private http: Http
+  ) {}
+
+  getAllUsers() {
+    return this.http.get('users.json');
   }
 }
