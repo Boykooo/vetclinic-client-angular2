@@ -1,48 +1,48 @@
-import {Injectable} from "@angular/core";
-import {User} from "../entity/user";
 import {Http} from "@angular/http";
-
 import 'rxjs/add/operator/toPromise';
 
-@Injectable()
-export class UserService {
-  private pathToApi: string = 'http://localhost:8080/api/user';
+export class GenericService<Entity, PK> {
+  private pathToApi: string;
+  private http: Http;
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) {
+  constructor(http: Http, pathToApi: string) {
+    this.pathToApi = pathToApi;
+    this.http = http;
   }
 
-  getAllUsers(): Promise<User[]> {
+  getAll(): Promise<Entity[]> {
     return this.http.get(this.pathToApi)
       .toPromise()
       .then(response => {
-        return response.json();
+        let body = response.json();
+        return body || null;
       });
   }
 
-  addUser(user: User): void {
+  addEntity(entity: Entity): void {
     this.http
       .post(this.pathToApi,
-        user,
+        entity,
         this.headers
       )
       .toPromise()
       .then(res => console.log(res));
   }
 
-  updateUser(user: User): void {
+  updateEntity(entity: Entity): void {
     this.http
       .put(this.pathToApi,
-        user,
+        entity,
         this.headers
       )
       .toPromise()
       .then(res => console.log(res));
   }
 
-  deleteUser(email: string): void {
+  deleteEntity(key: PK): void {
     this.http
-      .delete(this.pathToApi + '/' + email,
+      .delete(this.pathToApi + '/' + key,
         this.headers
       )
       .toPromise()
