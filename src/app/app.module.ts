@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {WelcomeComponent} from "./welcome/welcome.compoent";
 import {AdminPanelModule} from "./admin-panel.module";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {AdminPanelModule} from "./admin-panel.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpModule,
     AdminPanelModule
   ],
   providers: [],

@@ -9,8 +9,8 @@ import {UserService} from "../../services/user.service";
 })
 
 export class UserTableComponent implements OnInit {
-
-  users: User[];
+  users: User[] = [];
+  user: User = new User();
 
   constructor(
     private userService: UserService
@@ -18,6 +18,18 @@ export class UserTableComponent implements OnInit {
   { }
 
   ngOnInit(): void {
-    this.users = this.userService.getAllUsers();
+    this.userService.getAllUsers().then(users => this.users = users);
+  }
+
+  addUser(): void{
+    this.userService.addUser(this.user);
+  }
+
+  updateUser(){
+    this.userService.updateUser(this.user);
+  }
+
+  deleteUser(){
+    this.userService.deleteUser(this.user.email);
   }
 }
