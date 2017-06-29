@@ -8,7 +8,7 @@ import {AdminPanelModule} from "./admin-panel.module";
 import {HttpModule} from "@angular/http";
 import {NavigationComponent} from "./main/navigation/navigation.component";
 import {FormsModule} from "@angular/forms";
-import {AboutComponent} from "./main/welcome/staticComponents/about.component";
+import {AboutComponent} from "./main/welcome/staticPages/about.component";
 
 @NgModule({
   declarations: [
