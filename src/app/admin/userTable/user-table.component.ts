@@ -12,24 +12,22 @@ export class UserTableComponent implements OnInit {
   users: User[] = [];
   user: User = new User();
 
-  constructor(
-    private userService: UserService
-  )
-  { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().then(users => this.users = users);
+    this.userService.getAll().then(users => this.users = users);
   }
 
-  addUser(): void{
-    this.userService.addUser(this.user);
+  addUser(): void {
+    this.userService.addEntity(this.user);
   }
 
-  updateUser(){
-    this.userService.updateUser(this.user);
+  updateUser() {
+    this.userService.updateEntity(this.user);
   }
 
-  deleteUser(){
-    this.userService.deleteUser(this.user.email);
+  deleteUser() {
+    this.userService.deleteEntity(this.user.email);
   }
 }
