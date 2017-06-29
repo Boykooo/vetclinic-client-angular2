@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {AdminPanelNavigationComponent} from "./admin/admin-panel-navigation.component";
+import {AdminPanelNavigationComponent} from "./admin/adminNavigation/admin-panel-navigation.component";
 import {UserTableComponent} from "./admin/userTable/user-table.component";
 import {EmployeeTableComponent} from "./admin/employeeTable/employee-table.component";
 import {RouterModule} from "@angular/router";

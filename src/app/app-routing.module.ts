@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {UserTableComponent} from "./admin/userTable/user-table.component";
-import {WelcomeComponent} from "./welcome/welcome.compoent";
+import {WelcomeComponent} from "./main/welcome/welcome.component";
 import {EmployeeTableComponent} from "./admin/employeeTable/employee-table.component";
 
 const routes: Routes = [
