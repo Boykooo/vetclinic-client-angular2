@@ -42,8 +42,8 @@ export class GenericService<Entity, PK> {
 
   deleteEntity(key: PK): void {
     this.http
-      .delete(this.pathToApi + '/' + key,
-        this.headers
+      .delete(this.pathToApi + '/' + key +'/',
+        this.headers,
       )
       .toPromise()
       .then(res => console.log(res));
