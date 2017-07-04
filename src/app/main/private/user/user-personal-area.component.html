@@ -1,0 +1,14 @@
+<navigation></navigation>
+<h2>Личный кабинет</h2>
+<hr>
+<h3>Данные пользователя</h3>
+<div style="font-size: 16px; padding-left: 30px">
+  <label>Почта: {{user.email}}</label> <br/>
+  <label>Имя: {{user.firstName}}</label> <br/>
+  <label>Фамилия: {{user.lastName}}</label> <br/>
+  <label>Номер телефона {{user.phoneNumber}}</label> <br/>
+  <label>Дата регистрации: {{user.regDate}}</label> <br/>
+
+  <a [routerLink]="['../user/pets']">Питомцы</a>
+</div>
+
