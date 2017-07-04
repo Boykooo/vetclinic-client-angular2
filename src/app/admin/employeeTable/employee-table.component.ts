@@ -21,7 +21,7 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.getAll().then(res => this.employees = res);
+    this.employeeService.getAll().subscribe(res => this.employees = res);
     this.employee = new Employee();
     this.roles = [];
     this.roles.push({id:1, name: 'EMPLOYEE'});

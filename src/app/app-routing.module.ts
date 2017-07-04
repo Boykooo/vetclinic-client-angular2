@@ -4,14 +4,17 @@ import {UserTableComponent} from "./admin/userTable/user-table.component";
 import {WelcomeComponent} from "./main/welcome/welcome.component";
 import {EmployeeTableComponent} from "./admin/employeeTable/employee-table.component";
 import {AboutComponent} from "./main/welcome/staticPages/about.component";
+import {ContactsComponent} from "./main/contacts/contacts.component";
+import {AdminAuthComponent} from "./admin/admin-auth.component";
 
 const routes: Routes = [
-  {path: 'admin', redirectTo: 'admin/user', pathMatch: 'full'},
+  {path: 'admin', component: AdminAuthComponent},
   {path: 'admin/user', component: UserTableComponent},
   {path: 'admin/employee', component: EmployeeTableComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
+  {path: 'contacts', component: ContactsComponent}
 ];
 
 @NgModule({

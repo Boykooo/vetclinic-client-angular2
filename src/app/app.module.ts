@@ -9,13 +9,15 @@ import {HttpModule} from "@angular/http";
 import {NavigationComponent} from "./main/navigation/navigation.component";
 import {FormsModule} from "@angular/forms";
 import {AboutComponent} from "./main/welcome/staticPages/about.component";
+import {ContactsComponent} from "./main/contacts/contacts.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     NavigationComponent,
-    AboutComponent
+    AboutComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

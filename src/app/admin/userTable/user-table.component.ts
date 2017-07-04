@@ -16,7 +16,7 @@ export class UserTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAll().then(users => this.users = users);
+    this.userService.getAll().subscribe(users => this.users = users);
   }
 
   addUser(): void {

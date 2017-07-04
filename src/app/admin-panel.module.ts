@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
+import {AdminAuthComponent} from "./admin/admin-auth.component";
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     EmployeeTableComponent,
     UserTableComponent,
-    AdminPanelNavigationComponent
+    AdminPanelNavigationComponent,
+    AdminAuthComponent
   ],
   providers: []
 })

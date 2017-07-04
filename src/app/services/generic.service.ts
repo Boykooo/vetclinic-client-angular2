@@ -1,5 +1,7 @@
 import {Http} from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map'
+import 'rxjs/Rx';
+import {Observable} from "rxjs/Observable";
 
 export class GenericService<Entity, PK> {
   private pathToApi: string;
@@ -11,13 +13,16 @@ export class GenericService<Entity, PK> {
     this.http = http;
   }
 
-  getAll(): Promise<Entity[]> {
+  getAll(): Observable<Entity[]> {
     return this.http.get(this.pathToApi)
-      .toPromise()
-      .then(response => {
-        let body = response.json();
-        return body || null;
-      });
+      .map(response => response.json());
+
+
+    // .toPromise()
+    // .then(response => {
+    //   let body = response.json();
+    //   return body || null;
+    // });
   }
 
   addEntity(entity: Entity): void {
@@ -42,7 +47,7 @@ export class GenericService<Entity, PK> {
 
   deleteEntity(key: PK): void {
     this.http
-      .delete(this.pathToApi + '/' + key +'/',
+      .delete(this.pathToApi + '/' + key + '/',
         this.headers,
       )
       .toPromise()
