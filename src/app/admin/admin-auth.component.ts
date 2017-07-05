@@ -1,36 +1,39 @@
 import {Component, OnInit} from '@angular/core'
 import {Employee} from "../entity/employee";
-import {Http} from "@angular/http";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'admin-auth',
   templateUrl: './admin-auth.component.html',
+  providers: [AuthService]
 })
 
 export class AdminAuthComponent implements OnInit {
 
   employee: Employee;
-  private token: string;
-  private pathToApi: string;
-  private headers = new Headers({'Content-Type': 'application/json'});
+  error: string;
 
-  constructor(private http: Http) {
+  constructor(private authService: AuthService,
+              private router: Router) {
+
   }
 
   ngOnInit(): void {
-    this.pathToApi = "http://localhost:8080/api/auth/employee";
     this.employee = new Employee();
   }
 
   login(): void {
-    this.http
-      .post(this.pathToApi,
-        this.employee,
-        this.headers
-      )
-      .toPromise()
-      .then(res => console.log(res));
+    this.authService.employeeAuth(this.employee).subscribe(
+      body => {
+        if (body.status === "OK") {
+          this.router.navigate(['admin/user']);
+        }
+        else {
+          this.error = body.error;
+        }
+      }
+    );
   }
-
-
 }
+

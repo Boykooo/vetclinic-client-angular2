@@ -5,11 +5,12 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {GenericService} from "./generic.service";
 import {RequestConst} from "../util/request-const";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class UserService extends GenericService<User, string>{
 
-  constructor(http: Http) {
-    super(http, RequestConst.pathToUserApi);
+  constructor(http: Http, authService: AuthService) {
+    super(http, RequestConst.pathToUserApi, authService);
   }
 }

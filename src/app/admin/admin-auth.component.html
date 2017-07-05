@@ -1,5 +1,12 @@
-<form class="form-horizontal">
-  <div class="form-group">
+<div class="container" style="margin: 15px">
+
+  <div class="row" style="margin-bottom: 10px">
+    <div *ngIf="error" style="color: red;">
+      Error :   {{error}}
+    </div>
+  </div>
+
+  <div class="row">
     <label for="email" class="col-sm-2 control-label">
       Email
     </label>
@@ -10,7 +17,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="row">
     <label for="password" class="col-sm-2 control-label">
       Password
     </label>
@@ -20,13 +27,16 @@
              placeholder="Password"/>
     </div>
   </div>
-
-  <div class="col-sm-4">
+  <div class="row">
     <button type="submit"
+            style="font-size: 15px;"
             class="btn btn-primary btn-sm"
             data-dismiss="modal" aria-label="Close"
             (click)="login()">
-      Add user
+      Login
     </button>
   </div>
-</form>
+
+</div>
+
+

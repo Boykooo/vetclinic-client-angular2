@@ -7,6 +7,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {AdminAuthComponent} from "../admin/admin-auth.component";
+import {AuthService} from "../services/auth.service";
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {AdminAuthComponent} from "../admin/admin-auth.component";
     AdminPanelNavigationComponent,
     AdminAuthComponent
   ],
-  providers: []
+  providers: [AuthService]
 })
 export class AdminPanelModule {
 
