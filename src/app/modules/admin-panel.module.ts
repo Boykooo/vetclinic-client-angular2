@@ -21,8 +21,7 @@ import {AuthService} from "../services/auth.service";
     UserTableComponent,
     AdminPanelNavigationComponent,
     AdminAuthComponent
-  ],
-  providers: [AuthService]
+  ]
 })
 export class AdminPanelModule {
 

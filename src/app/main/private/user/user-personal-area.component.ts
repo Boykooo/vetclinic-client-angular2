@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../entity/user";
 import {UserPetsComponent} from "./pets/user-pets.component";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'user-personal-area',
@@ -10,12 +11,9 @@ import {UserPetsComponent} from "./pets/user-pets.component";
 export class UserPersonalAreaComponent implements OnInit{
   private user: User;
 
+  constructor() {}
+
   ngOnInit(): void {
-    this.user = new User();
-    this.user.email = 'test';
-    this.user.firstName = 'test';
-    this.user.lastName = 'asdas';
-    this.user.phoneNumber = 'asdas';
-    this.user.regDate = new Date();
+
   }
 }
