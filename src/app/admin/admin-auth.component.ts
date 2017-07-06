@@ -5,8 +5,7 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'admin-auth',
-  templateUrl: './admin-auth.component.html',
-  providers: [AuthService]
+  templateUrl: './admin-auth.component.html'
 })
 
 export class AdminAuthComponent implements OnInit {

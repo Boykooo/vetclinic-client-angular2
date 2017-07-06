@@ -5,15 +5,12 @@ import {RequestConst} from "../util/request-const";
 import {User} from "../entity/user";
 
 @Injectable()
-export class AuthService implements OnInit {
+export class AuthService {
 
   private token: string;
   private headers;
 
   constructor(private http: Http) {
-  }
-
-  ngOnInit(): void {
     this.token = "";
     this.headers = RequestConst.baseHeaders;
   }
@@ -40,7 +37,7 @@ export class AuthService implements OnInit {
   }
 
   logout(): void {
-    this.token = "";
+    this.token = "null";
   }
 
   getToken(): string {
