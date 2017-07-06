@@ -1,9 +1,8 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <a class="navbar-brand">Vet clinic</a>
-
+  <div class="container-fluid" style="font-size: 18px">
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-left" style="width:100%">
+        <li><a routerLink="/welcome" class="navbar-brand">Vet clinic</a>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Tables <span class="caret"></span>
@@ -12,6 +11,13 @@
             <li><a [routerLink]="['../user']">Users</a></li>
             <li><a [routerLink]="['../employee']">Employees</a></li>
           </ul>
+        </li>
+        <li class="navbar-right">
+          <button type="button"
+                  class="btn btn-primary navbar-btn"
+          (click)="logout()">
+            Выйти
+          </button>
         </li>
       </ul>
     </div>
