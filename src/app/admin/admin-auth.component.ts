@@ -23,7 +23,7 @@ export class AdminAuthComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.employeeAuth(this.employee).subscribe(
+    this.authService.adminAuth(this.employee).subscribe(
       body => {
         if (body.status === "OK") {
           this.router.navigate(['admin/user']);
