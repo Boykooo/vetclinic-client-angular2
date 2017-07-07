@@ -11,7 +11,7 @@ export class AuthService {
   private headers;
 
   constructor(private http: Http) {
-    this.token = "";
+    this.token = null;
     this.headers = RequestConst.baseHeaders;
   }
 
@@ -42,11 +42,15 @@ export class AuthService {
   }
 
   logout(): void {
-    this.token = "null";
+    this.token = null;
   }
 
   getToken(): string {
     return this.token;
+  }
+
+  isLogin(): boolean {
+    return this.token != null;
   }
 
 }

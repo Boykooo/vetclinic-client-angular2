@@ -43,7 +43,10 @@ export class NavigationComponent implements OnInit {
   }
 
   isLogin(): boolean {
-    // return this.authService.
-    return true;
+    return this.authService.isLogin();
+  }
+
+  goToPersonalArea(): void {
+    this.router.navigate(['/user'])
   }
 }
