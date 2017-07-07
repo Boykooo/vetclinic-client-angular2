@@ -13,6 +13,7 @@ import {ContactsComponent} from "../main/contacts/contacts.component";
 import {UserPersonalAreaModule} from "./user-personal-area.module";
 import {NavigationModule} from "./navigation.module";
 import {AuthService} from "../services/auth.service";
+import {EmployeeModule} from "./employee-module";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {AuthService} from "../services/auth.service";
     FormsModule,
     AdminPanelModule,
     UserPersonalAreaModule,
-    NavigationModule
+    NavigationModule,
+    EmployeeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

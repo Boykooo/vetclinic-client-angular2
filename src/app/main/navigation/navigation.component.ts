@@ -30,7 +30,11 @@ export class NavigationComponent implements OnInit {
       .subscribe(
         body => {
           if (body.status === "OK") {
-            this.router.navigate(['/user']);
+            if (body.userType == "USER") {
+              this.router.navigate(['/user']);
+            } else {
+              this.router.navigate(['/employee']);
+            }
           } else {
             this.error = body.error;
           }
