@@ -7,24 +7,32 @@
         <li><a routerLink="/welcome">Отзывы</a></li>
         <li><a routerLink="/about">О нас</a></li>
         <li><a routerLink="/contacts">Контакты</a></li>
-        <li class="navbar-right">
 
-          <div *ngIf="isLogin(); else notLoginBlock">
-            <button type="button" class="btn btn-primary navbar-btn"
-                    (click)="goToPersonalArea()">
-              Личный кабинет
-            </button>
-          </div>
 
-          <ng-template #notLoginBlock>
+
+        <div *ngIf="isLogin(); else notLoginBlock">
+          <li class="dropdown navbar-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Учетная запись<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a (click)="goToPersonalArea()">Личный кабинет</a></li>
+              <li><a (click)="logout()">Выйти</a></li>
+            </ul>
+          </li>
+        </div>
+
+        <ng-template #notLoginBlock>
+          <li class="navbar-right">
             <button type="button" class="btn btn-primary navbar-btn"
                     data-toggle="modal" data-target="#loginModal">
               Войти
             </button>
-          </ng-template>
-        </li>
+          </li>
+        </ng-template>
       </ul>
     </div>
+
   </div>
 </nav>
 

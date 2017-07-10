@@ -3,7 +3,6 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../entity/user";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {UserType} from "../../enums/user-type"
 
 @Component({
   selector: 'navigation',
@@ -26,13 +25,10 @@ export class NavigationComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.user);
     this.authService.userAuth(this.user)
       .subscribe(
         body => {
           if (body.status === "OK") {
-            console.log("body=", body);
-            console.log("userType=", body.userType);
             if (body.userType === "CLIENT") {
               this.router.navigate(['/user']);
             } else {
@@ -55,5 +51,10 @@ export class NavigationComponent implements OnInit {
 
   goToPersonalArea(): void {
     this.router.navigate(['/user'])
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/'])
   }
 }
