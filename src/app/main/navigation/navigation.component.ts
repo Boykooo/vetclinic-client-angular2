@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../entity/user";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {UserType} from "../../enums/user-type"
 
 @Component({
   selector: 'navigation',
@@ -30,7 +31,9 @@ export class NavigationComponent implements OnInit {
       .subscribe(
         body => {
           if (body.status === "OK") {
-            if (body.userType == "USER") {
+            console.log("body=", body);
+            console.log("userType=", body.userType);
+            if (body.userType === "CLIENT") {
               this.router.navigate(['/user']);
             } else {
               this.router.navigate(['/employee']);

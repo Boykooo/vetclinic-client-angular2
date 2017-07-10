@@ -43,7 +43,6 @@ export class GenericService<Entity, PK> {
     )
       .map(
         response => {
-          console.log(response)
           return response.json()
         }
       );
