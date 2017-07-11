@@ -9,6 +9,6 @@ import {AuthService} from "./auth.service";
 @Injectable()
 export class EmployeeService extends GenericService<Employee, String>{
   constructor(http: Http, authService: AuthService) {
-    super(http, RequestConst.pathToEmployeeApi, authService);
+    super(http, RequestConst.PATH_TO_EMPLOYEE_API, authService);
   }
 }

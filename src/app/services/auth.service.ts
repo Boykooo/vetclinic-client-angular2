@@ -12,12 +12,12 @@ export class AuthService {
 
   constructor(private http: Http) {
     this.token = null;
-    this.headers = RequestConst.baseHeaders;
+    this.headers = RequestConst.BASE_HEADERS;
   }
 
   adminAuth(employee: Employee): any {
     return this.http
-      .post(RequestConst.pathToAdminAuth,
+      .post(RequestConst.PATH_TO_ADMIN_AUTH,
         employee,
         this.headers
       )
@@ -30,7 +30,7 @@ export class AuthService {
 
   userAuth(user: User): any {
     return this.http
-      .post(RequestConst.pathToUserAuth,
+      .post(RequestConst.PATH_TO_USER_AUTH,
         user,
         this.headers
       )

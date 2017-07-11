@@ -18,9 +18,9 @@ export class GenericService<Entity, PK> {
     this.pathToApi = pathToApi;
     this.http = http;
     this.authService = authService;
-    this.headers = RequestConst.baseHeaders;
+    this.headers = RequestConst.BASE_HEADERS;
     this.headers.append('Access-Control-Allow-Headers', '*');
-    this.headers.append(RequestConst.authHeader, this.authService.getToken());
+    this.headers.append(RequestConst.AUTH_HEADER, this.authService.getToken());
     this.options = new RequestOptions({headers: this.headers})
   }
 
@@ -78,8 +78,8 @@ export class GenericService<Entity, PK> {
   }
 
   refreshToken(): void {
-    this.headers.set(RequestConst.authHeader, this.authService.getToken());
-    // this.headers.set(RequestConst.authHeader, RequestConst.employeeToken);
+    this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
+    // this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
     this.options.headers = this.headers;
   }
 }

@@ -1,1 +1,7 @@
 <navigation></navigation>
+
+<label class="control-label">Select File</label>
+<input id="input-1" type="file" class="file" #fileInput > <br/>
+<!--(change)="onChange($event)"-->
+
+<button type="button" class="btn btn-primary" (click)="sendFile()">Send</button>

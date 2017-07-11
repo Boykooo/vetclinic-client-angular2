@@ -11,6 +11,6 @@ import {AuthService} from "./auth.service";
 export class UserService extends GenericService<User, string>{
 
   constructor(http: Http, authService: AuthService) {
-    super(http, RequestConst.pathToUserApi, authService);
+    super(http, RequestConst.PATH_TO_USER_API, authService);
   }
 }
