@@ -12,7 +12,6 @@ export class UserPetsComponent implements OnInit {
   public animals: Animal[];
 
   constructor(private animalService: AnimalService) {
-
   }
 
   ngOnInit(): void {
