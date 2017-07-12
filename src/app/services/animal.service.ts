@@ -19,18 +19,6 @@ export class AnimalService extends GenericService<Animal, number> {
   }
 
   uploadImage(animalId: number, formData: FormData): any {
-
-    // this.options.body = formData;
-    // this.options.url = "http://localhost:8080/mongo/3";
-    // this.options.method = "POST";
-
-    // let xhr:XMLHttpRequest = new XMLHttpRequest();
-    //
-    // xhr.open('POST', "http://localhost:8080/api/animal/3/image", true);
-    // xhr.send(formData);
-
-
-
     this.refreshToken();
 
     return this.http

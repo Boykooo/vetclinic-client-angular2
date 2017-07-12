@@ -57,21 +57,23 @@ export class GenericService<Entity, PK> {
         this.options
       ).map(
         response => {
-          return response;
+          return response.json();
         }
-      ).subscribe(
-        response =>
-          response.json()
-      )
+      );
   }
 
-  updateEntity(entity: Entity): void {
+  updateEntity(entity: Entity): any {
     this.refreshToken();
 
-    this.http
+    return this.http
       .put(this.pathToApi,
         entity,
         this.headers
+      )
+      .map(
+        response =>{
+          return response.json();
+        }
       );
   }
 
@@ -81,12 +83,17 @@ export class GenericService<Entity, PK> {
     this.http
       .delete(this.pathToApi + '/' + key + '/',
         this.headers,
+      )
+      .map(
+        response => {
+          return response.json()
+        }
       );
   }
 
   refreshToken(): void {
-    // this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
-    this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
+    this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
+    // this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
     this.options.headers = this.headers;
   }
 }

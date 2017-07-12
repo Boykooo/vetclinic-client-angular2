@@ -6,6 +6,7 @@ import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area
 import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
 import {NavigationComponent} from "../main/navigation/navigation.component";
 import {NavigationModule} from "./navigation.module";
+import {AnimalService} from "../services/animal.service";
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import {NavigationModule} from "./navigation.module";
     UserPersonalAreaComponent,
     UserPetsComponent,
   ],
-  providers: []
+  providers: [AnimalService]
 })
 
 export class UserPersonalAreaModule {

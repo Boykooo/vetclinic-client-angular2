@@ -1,18 +1,25 @@
-
 import {Component, OnInit} from '@angular/core'
 import {Animal} from "../../../../entity/animal";
+import {AnimalService} from "../../../../services/animal.service";
 
 @Component({
   selector: 'user-pets',
   templateUrl: './user-pets.component.html'
 })
 
-export class UserPetsComponent implements OnInit{
+export class UserPetsComponent implements OnInit {
 
-  private animals: Animal[];
+  public animals: Animal[];
 
-  ngOnInit(): void {
+  constructor(private animalService: AnimalService) {
 
   }
 
+  ngOnInit(): void {
+    this.animalService.getAll().subscribe(
+      animals => {
+        this.animals = animals;
+      }
+    );
+  }
 }

@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../entity/user";
-import {UserPetsComponent} from "./pets/user-pets.component";
-import {AuthService} from "../../../services/auth.service";
 import {UserService} from "../../../services/user.service";
 
 @Component({
@@ -11,7 +9,7 @@ import {UserService} from "../../../services/user.service";
 })
 
 export class UserPersonalAreaComponent implements OnInit {
-  private user: User;
+  public user: User;
 
   constructor(private userService: UserService) {
     this.user = new User();

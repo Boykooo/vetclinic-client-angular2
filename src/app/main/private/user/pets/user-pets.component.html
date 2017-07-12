@@ -5,3 +5,21 @@
 </button>
 
 <h2>Ваши питомцы</h2>
+
+<div *ngFor="let animal of animals" class="col-md-6">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4> Имя: {{animal.name}} </h4>
+    </div>
+    <div class="panel-body" style="font-size: 16px">
+      Возраст: {{animal.age}} <br/>
+      Дата регистрации: {{animal.regDate}} <br/>
+      <div class="panel panel-default">
+        <div class="panel-body" style="overflow-wrap: break-word;">
+          {{animal.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
