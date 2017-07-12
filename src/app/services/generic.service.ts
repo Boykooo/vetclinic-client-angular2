@@ -8,20 +8,20 @@ import map = promise.map;
 
 export class GenericService<Entity, PK> {
 
-  private pathToApi: string;
-  private http: Http;
-  private headers: Headers;
-  private authService: AuthService;
-  private options: RequestOptions;
+  protected pathToApi: string;
+  protected http: Http;
+  public headers: Headers;
+  protected authService: AuthService;
+  public options: RequestOptions;
 
   constructor(http: Http, pathToApi: string, authService: AuthService) {
     this.pathToApi = pathToApi;
     this.http = http;
     this.authService = authService;
-    this.headers = RequestConst.BASE_HEADERS;
+    this.headers = new Headers(RequestConst.BASE_HEADERS);
     this.headers.append('Access-Control-Allow-Headers', '*');
     this.headers.append(RequestConst.AUTH_HEADER, this.authService.getToken());
-    this.options = new RequestOptions({headers: this.headers})
+    this.options = new RequestOptions({headers: this.headers});
   }
 
   getAll(): Observable<Entity[]> {
@@ -48,14 +48,21 @@ export class GenericService<Entity, PK> {
       );
   }
 
-  addEntity(entity: Entity): void {
+  addEntity(entity: Entity): any {
     this.refreshToken();
 
-    this.http
+    return this.http
       .post(this.pathToApi,
         entity,
-        this.headers
-      );
+        this.options
+      ).map(
+        response => {
+          return response;
+        }
+      ).subscribe(
+        response =>
+          response.json()
+      )
   }
 
   updateEntity(entity: Entity): void {
@@ -78,8 +85,8 @@ export class GenericService<Entity, PK> {
   }
 
   refreshToken(): void {
-    this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
-    // this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
+    // this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
+    this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
     this.options.headers = this.headers;
   }
 }

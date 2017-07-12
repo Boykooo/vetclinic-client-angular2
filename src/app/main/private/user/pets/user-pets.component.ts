@@ -1,12 +1,10 @@
 
 import {Component, OnInit} from '@angular/core'
 import {Animal} from "../../../../entity/animal";
-import {AnimalService} from "../../../../services/animal.service";
 
 @Component({
   selector: 'user-pets',
-  templateUrl: './user-pets.component.html',
-  providers: [AnimalService]
+  templateUrl: './user-pets.component.html'
 })
 
 export class UserPetsComponent implements OnInit{
