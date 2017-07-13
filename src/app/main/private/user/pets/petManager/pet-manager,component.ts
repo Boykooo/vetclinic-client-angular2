@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Animal} from "../../../../../entity/animal";
+import {Animal} from "../../../../../entities/animal";
 
 @Component({
   selector: 'pet-manager',

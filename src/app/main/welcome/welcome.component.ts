@@ -27,8 +27,6 @@ export class WelcomeComponent {
     let formData = new FormData();
     formData.append('file', inputEl.files.item(0));
 
-    console.log(formData);
-
     // this.http
     //   .post(
     //     "http://localhost:8080/api/animal/3/image",

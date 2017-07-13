@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from "../../entity/employee";
+import {Employee} from "../../entities/employee";
 import {EmployeeService} from "../../services/employee.service";
 import {Http} from "@angular/http";
 

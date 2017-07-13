@@ -1,5 +1,5 @@
 
-import {Employee} from "../entity/employee";
+import {Employee} from "../entities/employee";
 import {Http} from "@angular/http";
 import {GenericService} from "./generic.service";
 import {RequestConst} from "../util/request-const";

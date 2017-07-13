@@ -1,6 +1,6 @@
 <navigation></navigation>
 
-<button type="button" class="btn btn-primary">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
   Добавить питомца
 </button>
 
@@ -8,12 +8,12 @@
 
 <div *ngFor="let animal of animals" class="col-md-6">
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4> Имя: {{animal.name}} </h4>
+  <div class="panel panel-default text-center">
+    <div class="panel-heading text-center">
+      <h4> {{animal.name}} </h4>
     </div>
 
-    <div class="panel-body text-center" style="font-size: 16px;">
+    <div class="panel-body" style="font-size: 16px;">
       Возраст: {{animal.age}} <br/>
       Дата регистрации: {{animal.regDate}} <br/>
       <div class="panel panel-default">
@@ -22,12 +22,84 @@
         </div>
       </div>
 
-      <div class="text-center">
-        <button class="btn btn-primary">
-          Подробнее
-        </button>
-      </div>
+      <button class="btn btn-primary">
+        Подробнее
+      </button>
 
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="addModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title">
+          Добавить питомца
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12" style="padding-right: 30px;">
+              <form role="form" class="form-horizontal">
+                <div class="form-group">
+                  <label for="petName" class="col-sm-2 control-label">
+                    Имя питомца
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" id="petName" name="petName"
+                           [(ngModel)]="animal.name"
+                           placeholder="Имя"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="age" class="col-sm-2 control-label">
+                    Возраст
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" id="age" name="age"
+                           [(ngModel)]="animal.age"
+                           placeholder="Возраст"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="descr" class="col-sm-2 control-label">
+                    Описание
+                  </label>
+                  <div class="col-sm-4">
+                    <textarea class="form-control" style="resize: none;" id="descr"
+                              name="descr" rows="5" maxlength="900"
+                              [(ngModel)]="animal.description"
+                              placeholder="Описание питомца">
+                    </textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Фотография: </label>
+                  <input id="input-1" type="file" class="file" #fileInput>
+                </div>
+
+                <div class="col-sm-4">
+                  <button type="submit"
+                          class="btn btn-primary"
+                          data-dismiss="modal" aria-label="Close"
+                          (click)="addPet()">
+                    Добавить питомца
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

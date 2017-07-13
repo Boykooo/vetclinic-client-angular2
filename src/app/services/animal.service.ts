@@ -1,4 +1,4 @@
-import {Animal} from "../entity/animal";
+import {Animal} from "../entities/animal";
 import {GenericService} from "./generic.service";
 import {Http, Headers} from "@angular/http";
 import {RequestConst} from "../util/request-const";
@@ -10,20 +10,17 @@ export class AnimalService extends GenericService<Animal, number> {
 
   constructor(http: Http, authService: AuthService) {
     super(http, RequestConst.PATH_TO_ANIMAL_API, authService);
-    // this.headers.set('Content-Type', 'multipart/form-data');
-
-    // this.headers.append('Content-Type', 'multipart/form-data');
-
-    this.headers = new Headers();
-    this.headers.append(RequestConst.AUTH_HEADER, this.authService.getToken());
+    // this.headers = new Headers();
+    // this.headers.append(RequestConst.AUTH_HEADER, this.authService.getToken());
   }
 
   uploadImage(animalId: number, formData: FormData): any {
-    this.refreshToken();
+    this.headers = new Headers();
+    this.headers.append(RequestConst.AUTH_HEADER, this.authService.getToken());
 
     return this.http
       .post(
-        "http://localhost:8080/api/animal/3/image",
+        "http://localhost:8080/api/animal/" + animalId +"/image",
         formData,
         this.options
       )

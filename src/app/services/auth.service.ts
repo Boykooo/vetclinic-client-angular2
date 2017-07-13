@@ -1,8 +1,8 @@
 import {Injectable, OnInit} from "@angular/core";
 import {Http} from "@angular/http";
-import {Employee} from "../entity/employee";
+import {Employee} from "../entities/employee";
 import {RequestConst} from "../util/request-const";
-import {User} from "../entity/user";
+import {User} from "../entities/user";
 
 @Injectable()
 export class AuthService {
