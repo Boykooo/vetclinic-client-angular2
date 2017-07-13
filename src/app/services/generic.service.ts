@@ -49,6 +49,21 @@ export class GenericService<Entity, PK> {
       );
   }
 
+  getInfo(pk: PK): Observable<Entity> {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/info/' + pk,
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
+
+
   addEntity(entity: Entity): any {
     this.refreshToken();
 

@@ -7,7 +7,7 @@ import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
 import {NavigationComponent} from "../main/navigation/navigation.component";
 import {NavigationModule} from "./navigation.module";
 import {AnimalService} from "../services/animal.service";
-import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager,component";
+import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
 
 @NgModule({
   imports: [

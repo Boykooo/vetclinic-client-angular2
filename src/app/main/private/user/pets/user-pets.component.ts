@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core'
 import {Animal} from "../../../../entities/animal";
 import {AnimalService} from "../../../../services/animal.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'user-pets',
@@ -14,7 +15,8 @@ export class UserPetsComponent implements OnInit {
 
   @ViewChild('fileInput') inputEl: ElementRef;
 
-  constructor(private animalService: AnimalService) {
+  constructor(private animalService: AnimalService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,10 +37,14 @@ export class UserPetsComponent implements OnInit {
     this.animalService.addEntity(this.animal)
       .subscribe(
         response => {
-          if (response.status === "OK"){
+          if (response.status === "OK") {
             this.animalService.uploadImage(response.data, formData);
           }
         }
       );
+  }
+
+  showDetails(animal: Animal) {
+    this.router.navigateByUrl("['/user/pets']", animal.id);
   }
 }

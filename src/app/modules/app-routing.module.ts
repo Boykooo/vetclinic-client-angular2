@@ -9,6 +9,7 @@ import {AdminAuthComponent} from "../admin/admin-auth.component";
 import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area.component";
 import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
 import {EmployeePersonalAreaComponent} from "../main/private/employee/employee-personal-area.component";
+import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminAuthComponent},
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'user', component: UserPersonalAreaComponent},
   {path: 'employee', component: EmployeePersonalAreaComponent},
-  {path: 'user/pets', component: UserPetsComponent}
+  {path: 'user/pets', component: UserPetsComponent},
+  {path: 'user/pets/:id', component: PetManagerComponent}
+
 ];
 
 @NgModule({
