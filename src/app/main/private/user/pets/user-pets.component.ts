@@ -45,6 +45,6 @@ export class UserPetsComponent implements OnInit {
   }
 
   showDetails(animal: Animal) {
-    this.router.navigateByUrl("['/user/pets']", animal.id);
+    this.router.navigate(['/user/pets', animal.id]);
   }
 }

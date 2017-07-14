@@ -49,7 +49,7 @@ export class GenericService<Entity, PK> {
       );
   }
 
-  getInfo(pk: PK): Observable<Entity> {
+  getInfoById(pk: PK): Observable<Entity> {
     this.refreshToken();
 
     return this.http.get(

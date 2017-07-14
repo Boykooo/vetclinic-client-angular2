@@ -21,7 +21,7 @@ export class PetManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.animalService.getInfo(+params.get('id')))
+      .switchMap((params: ParamMap) => this.animalService.getInfoById(+params.get('id')))
       .subscribe(animal => console.log(animal));
   }
 }
