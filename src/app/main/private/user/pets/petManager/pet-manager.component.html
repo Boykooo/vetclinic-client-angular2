@@ -1,6 +1,11 @@
 <navigation></navigation>
 
-<div class="panel panel-default text-center col-md-5">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+  Редактировать данные
+</button>
+<br/>
+
+<div style="margin-top: 30px" class="panel panel-default text-center col-md-5">
   <div class="panel-heading text-center">
     <h4> {{animal.name}} </h4>
   </div>
@@ -13,6 +18,87 @@
         {{animal.description}}
       </div>
     </div>
-    <img src="http://localhost:8080/images/animal/{{animal.id}}" alt="Изображение отсутствует">
+    <img src="http://localhost:8080/images/animal/{{animal.id}}"
+         alt="Изображение отсутствует">
+  </div>
+</div>
+
+
+<div class="modal fade" id="editModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12" style="padding-right: 30px;">
+              <form role="form" class="form-horizontal">
+                <div class="form-group">
+                  <label for="petName" class="col-sm-2 control-label">
+                    Имя питомца
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" id="petName" name="petName"
+                           [(ngModel)]="animal.name"
+                           placeholder="Имя"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="age" class="col-sm-2 control-label">
+                    Возраст
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" id="age" name="age"
+                           [(ngModel)]="animal.age"
+                           placeholder="Возраст"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="descr" class="col-sm-2 control-label">
+                    Описание
+                  </label>
+                  <div class="col-sm-4">
+                    <textarea class="form-control" style="resize: none;" id="descr"
+                              name="descr" rows="5" maxlength="900"
+                              [(ngModel)]="animal.description"
+                              placeholder="Описание питомца">
+                    </textarea>
+                  </div>
+                </div>
+
+                <p style="text-align: center">
+                  <img src="http://localhost:8080/images/animal/{{animal.id}}"
+                       alt="Изображение отсутствует"
+                       width="140" height="120" >
+                </p>
+
+
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Обновить фото: </label>
+                  <input id="input-1" type="file" class="file" #fileInput>
+                </div>
+
+
+                <div class="col-sm-4">
+                  <button type="submit"
+                          class="btn btn-primary"
+                          data-dismiss="modal" aria-label="Close"
+                          (click)="refreshData()">
+                    Обновить данные
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

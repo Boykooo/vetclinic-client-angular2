@@ -83,7 +83,7 @@ export class GenericService<Entity, PK> {
     return this.http
       .put(this.pathToApi,
         entity,
-        this.headers
+        this.options
       )
       .map(
         response =>{
