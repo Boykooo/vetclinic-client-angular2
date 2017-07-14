@@ -53,16 +53,15 @@ export class GenericService<Entity, PK> {
     this.refreshToken();
 
     return this.http.get(
-      this.pathToApi + '/info/' + pk,
+      this.pathToApi + '/info/' + pk + "/",
       this.options
     )
       .map(
         response => {
-          return response.json()
+          return response.json().data
         }
       );
   }
-
 
   addEntity(entity: Entity): any {
     this.refreshToken();

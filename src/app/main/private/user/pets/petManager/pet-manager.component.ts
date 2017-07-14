@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap'
 
 export class PetManagerComponent implements OnInit {
 
-  animal: Animal;
+  public animal: Animal;
 
   constructor(private route: ActivatedRoute,
               private animalService: AnimalService) {
@@ -22,6 +22,8 @@ export class PetManagerComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.animalService.getInfoById(+params.get('id')))
-      .subscribe(animal => console.log(animal));
+      .subscribe(animal => {
+        this.animal = animal;
+      });
   }
 }

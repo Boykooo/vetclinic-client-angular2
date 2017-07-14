@@ -22,7 +22,8 @@
           {{currAnimal.description}}
         </div>
       </div>
-
+      <img src="http://localhost:8080/images/animal/{{currAnimal.id}}" alt="Изображение отсутствует">
+      <br/>
       <button class="btn btn-primary" (click)="showDetails(currAnimal)">
         Подробнее
       </button>
