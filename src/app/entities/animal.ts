@@ -4,6 +4,6 @@ export class Animal{
   name: string;
   age: number;
   description: string;
-  isIll: boolean;
   regDate: Date;
+  ill: boolean;
 }

@@ -26,6 +26,7 @@ export class UserPetsComponent implements OnInit {
     this.animalService.getAll().subscribe(
       animals => {
         this.animals = animals;
+        console.log(animals);
       }
     );
   }
@@ -45,11 +46,11 @@ export class UserPetsComponent implements OnInit {
       );
   }
 
-  showDetails(animal: Animal) {
+  showDetails(animal: Animal): void {
     this.router.navigate(['/user/pets', animal.id]);
   }
 
-  getStatus(){
-    return this.animal.isIll ? "Болен" : "Здоров";
+  getStatus(isIll: boolean): string {
+    return isIll ? "Болен" : "Здоров";
   }
 }

@@ -17,7 +17,7 @@
     <div class="panel-body" style="font-size: 16px;">
       Возраст: {{currAnimal.age}} <br/>
       Дата регистрации: {{currAnimal.regDate}} <br/>
-      Статус : {{getStatus()}}
+      Статус : {{getStatus(currAnimal.ill)}}
       <div class="panel panel-default">
         <div class="panel-body" style="overflow-wrap: break-word;">
           {{currAnimal.description}}
@@ -30,7 +30,6 @@
       <button class="btn btn-primary" (click)="showDetails(currAnimal)">
         Подробнее
       </button>
-
     </div>
   </div>
 </div>

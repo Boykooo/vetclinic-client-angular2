@@ -32,7 +32,8 @@ export class EmployeeTableComponent implements OnInit {
   addEmployee(): void {
     this.employee.role = this.roles[this.selectedRole].name;
     console.log(this.employee);
-    this.employeeService.addEntity(this.employee);
+    this.employeeService.addEntity(this.employee)
+      .subscribe();
   }
 
   updateEmployee(): void {
