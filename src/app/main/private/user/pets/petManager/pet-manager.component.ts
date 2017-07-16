@@ -4,6 +4,8 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {AnimalService} from "../../../../../services/animal.service";
 
 import 'rxjs/add/operator/switchMap'
+import {PatientService} from "../../../../../services/patient.service";
+import {Patient} from "../../../../../entities/patient";
 
 @Component({
   selector: 'pet-manager',
@@ -12,12 +14,16 @@ import 'rxjs/add/operator/switchMap'
 
 export class PetManagerComponent implements OnInit {
 
-  public animal: Animal;
+  animal: Animal;
+  patient: Patient;
+
   @ViewChild('fileInput') inputEl: ElementRef;
 
   constructor(private route: ActivatedRoute,
-              private animalService: AnimalService) {
+              private animalService: AnimalService,
+              private patientService: PatientService) {
     this.animal = new Animal();
+    this.patient = new Patient();
   }
 
   ngOnInit(): void {
@@ -32,7 +38,7 @@ export class PetManagerComponent implements OnInit {
     this.animalService.updateEntity(this.animal)
       .subscribe(
         response => {
-          if (response.status === "OK"){
+          if (response.status === "OK") {
             let inputEl: HTMLInputElement = this.inputEl.nativeElement;
             let formData = new FormData();
             formData.append('file', inputEl.files.item(0));
@@ -40,11 +46,23 @@ export class PetManagerComponent implements OnInit {
             this.animalService.updateImage(this.animal.id, formData)
               .subscribe(
                 response => {
-                  if (response.status != "OK"){
+                  if (response.status != "OK") {
                     console.log(response.error);
                   }
                 }
               );
+          }
+        }
+      )
+  }
+
+  petFellIll() {
+    this.patient.animal = this.animal;
+    this.patientService.addEntity(this.patient)
+      .subscribe(
+        response => {
+          if (response["status"] != "OK") {
+            console.log(response["error"]);
           }
         }
       )

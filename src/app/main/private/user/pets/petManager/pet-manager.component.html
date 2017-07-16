@@ -19,10 +19,14 @@
       </div>
     </div>
     <img src="http://localhost:8080/images/animal/{{animal.id}}"
-         alt="Изображение отсутствует">
+         alt="Изображение отсутствует" width="140" height="120">
+
+    <br/>
+    <button class="btn btn-danger" style="margin-top: 30px" data-toggle="modal" data-target="#illModal">
+      Питомец заболел!
+    </button>
   </div>
 </div>
-
 
 <div class="modal fade" id="editModal" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -75,16 +79,13 @@
                 <p style="text-align: center">
                   <img src="http://localhost:8080/images/animal/{{animal.id}}"
                        alt="Изображение отсутствует"
-                       width="140" height="120" >
+                       width="140" height="120">
                 </p>
-
-
 
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Обновить фото: </label>
                   <input id="input-1" type="file" class="file" #fileInput>
                 </div>
-
 
                 <div class="col-sm-4">
                   <button type="submit"
@@ -94,6 +95,40 @@
                     Обновить данные
                   </button>
                 </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="illModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12" style="padding-right: 30px;">
+              <form role="form" class="form-horizontal text-center" style="font-size: 16px">
+                <div class="form-group">
+                  <label for="description" class="col-sm-2 control-label">
+                    Опишите проблему
+                  </label>
+                  <textarea class="form-control" style="resize: none; width: 400px" id="description"
+                            name="description" rows="5" maxlength="900"
+                            [(ngModel)]="patient.description">
+                    </textarea>
+                </div>
+                <button class="btn btn-success" (click)="petFellIll()" style="font-size: 16px">
+                  Послать запрос
+                </button>
               </form>
             </div>
           </div>

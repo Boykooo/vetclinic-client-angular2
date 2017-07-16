@@ -8,6 +8,7 @@ import {NavigationComponent} from "../main/navigation/navigation.component";
 import {NavigationModule} from "./navigation.module";
 import {AnimalService} from "../services/animal.service";
 import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
+import {PatientService} from "../services/patient.service";
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-mana
     UserPetsComponent,
     PetManagerComponent
   ],
-  providers: [AnimalService]
+  providers: [AnimalService, PatientService]
 })
 
 export class UserPersonalAreaModule {

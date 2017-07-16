@@ -48,4 +48,8 @@ export class UserPetsComponent implements OnInit {
   showDetails(animal: Animal) {
     this.router.navigate(['/user/pets', animal.id]);
   }
+
+  getStatus(){
+    return this.animal.isIll ? "Болен" : "Здоров";
+  }
 }

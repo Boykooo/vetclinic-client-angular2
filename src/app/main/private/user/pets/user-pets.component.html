@@ -17,12 +17,15 @@
     <div class="panel-body" style="font-size: 16px;">
       Возраст: {{currAnimal.age}} <br/>
       Дата регистрации: {{currAnimal.regDate}} <br/>
+      Статус : {{getStatus()}}
       <div class="panel panel-default">
         <div class="panel-body" style="overflow-wrap: break-word;">
           {{currAnimal.description}}
         </div>
       </div>
-      <img src="http://localhost:8080/images/animal/{{currAnimal.id}}" alt="Изображение отсутствует">
+      <img src="http://localhost:8080/images/animal/{{currAnimal.id}}"
+           alt="Изображение отсутствует"
+           width="140" height="120">
       <br/>
       <button class="btn btn-primary" (click)="showDetails(currAnimal)">
         Подробнее

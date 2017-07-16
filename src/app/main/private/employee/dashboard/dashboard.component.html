@@ -1,0 +1,21 @@
+<h2>Текущие пациенты: </h2>
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>№</th>
+    <th>Возраст питомца</th>
+    <th>Описание проблемы</th>
+    <th>Last name</th>
+    <th>Reg date</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let patient of patients">
+    <th>{{patient.id}}</th>
+    <th>{{patient.animal.age}}</th>
+    <th>{{patient.description}}</th>
+    <th>{{patient.startDate}}</th>
+    <th>{{patient.id}}</th>
+  </tr>
+</table>
