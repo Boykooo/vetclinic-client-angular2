@@ -65,6 +65,7 @@ export class GenericService<Entity, PK> {
 
   addEntity(entity: Entity): any {
     this.refreshToken();
+    console.log(entity);
 
     return this.http
       .post(this.pathToApi,
