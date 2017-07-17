@@ -7,6 +7,8 @@ import {RouterModule} from "@angular/router";
 import {EmployeePersonalAreaComponent} from "../main/private/employee/employee-personal-area.component";
 import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.component";
 import {PatientService} from "../services/patient.service";
+import {EmployeeService} from "../services/employee.service";
+import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
 
 @NgModule({
   imports: [
@@ -17,10 +19,12 @@ import {PatientService} from "../services/patient.service";
   ],
   declarations: [
     EmployeePersonalAreaComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeePatientsComponent
   ],
   providers: [
-    PatientService
+    PatientService,
+    EmployeeService
   ]
 })
 

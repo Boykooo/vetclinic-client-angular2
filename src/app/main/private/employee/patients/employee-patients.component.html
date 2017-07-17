@@ -1,0 +1,25 @@
+<navigation></navigation>
+
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>№</th>
+    <th>Возраст питомца</th>
+    <th>Описание проблемы</th>
+    <th>Статус</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tr *ngFor="let patient of patients">
+    <th>{{patient.id}}</th>
+    <th>{{patient.animal.age}}</th>
+    <th>{{patient.description}}</th>
+    <th>{{patient.status}}</th>
+
+    <th>
+      <button class="btn btn-primary" (click)="showDetails(patient)">
+        Подробнее
+      </button>
+    </th>
+  </tr>
+</table>
