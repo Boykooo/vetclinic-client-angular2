@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.patientService.getAll()
+    this.patientService.findNew()
       .subscribe(
         response => {
           if (response["status"] === "OK") {

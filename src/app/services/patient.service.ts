@@ -33,4 +33,18 @@ export class PatientService extends GenericService<Patient, number> {
       }
     );
   }
+
+  findNew(): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/new/',
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
 }
