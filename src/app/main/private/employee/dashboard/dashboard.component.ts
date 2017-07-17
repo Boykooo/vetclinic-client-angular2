@@ -28,4 +28,11 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+
+  takePatient(patient: Patient): void {
+    this.patientService.addEmployeeToPatient(patient.id)
+      .subscribe(
+        response => console.log(response)
+      );
+  }
 }

@@ -10,6 +10,7 @@ import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area
 import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
 import {EmployeePersonalAreaComponent} from "../main/private/employee/employee-personal-area.component";
 import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
+import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminAuthComponent},
@@ -21,14 +22,14 @@ const routes: Routes = [
   {path: 'user', component: UserPersonalAreaComponent},
   {path: 'employee', component: EmployeePersonalAreaComponent},
   {path: 'user/pets', component: UserPetsComponent},
-  {path: 'user/pets/:id', component: PetManagerComponent}
-
+  {path: 'user/pets/:id', component: PetManagerComponent},
+  {path: 'employee/dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }

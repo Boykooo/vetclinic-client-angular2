@@ -1,5 +1,6 @@
-<h2>Текущие пациенты: </h2>
+<navigation></navigation>
 
+<h2>Новые пациенты: </h2>
 
 <table class="table table-striped table-bordered">
   <thead>
@@ -7,15 +8,17 @@
     <th>№</th>
     <th>Возраст питомца</th>
     <th>Описание проблемы</th>
-    <th>Last name</th>
-    <th>Reg date</th>
+    <th></th>
   </tr>
   </thead>
   <tr *ngFor="let patient of patients">
     <th>{{patient.id}}</th>
     <th>{{patient.animal.age}}</th>
     <th>{{patient.description}}</th>
-    <th>{{patient.startDate}}</th>
-    <th>{{patient.id}}</th>
+    <th>
+      <button class="btn btn-primary" (click)="takePatient(patient)">
+        Взять пациента
+      </button>
+    </th>
   </tr>
 </table>

@@ -25,7 +25,7 @@ export class GenericService<Entity, PK> {
     this.options = new RequestOptions({headers: this.headers});
   }
 
-  getAll(): Observable<Entity[]> {
+  getAll(): any {
     this.refreshToken();
 
     return this.http.get(
@@ -108,8 +108,13 @@ export class GenericService<Entity, PK> {
   }
 
   refreshToken(): void {
-    this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
-    // this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
-    this.options.headers = this.headers;
+
+    this.headers = new Headers({'X-Auth-Token': this.authService.getToken()});
+    this.options = new RequestOptions({headers: this.headers});
+
+    // this.headers = n
+    // this.headers.set(RequestConst.AUTH_HEADER, this.authService.getToken());
+    // // this.headers.set(RequestConst.AUTH_HEADER, RequestConst.EMPLOYEE_TOKEN);
+    // this.options.headers = this.headers;
   }
 }

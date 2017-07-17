@@ -126,7 +126,10 @@
                             [(ngModel)]="patient.description">
                     </textarea>
                 </div>
-                <button class="btn btn-success" (click)="petFellIll()" style="font-size: 16px">
+                <button class="btn btn-success"
+                        data-dismiss="modal" aria-label="Close"
+                        (click)="petFellIll()"
+                        style="font-size: 16px">
                   Послать запрос
                 </button>
               </form>
