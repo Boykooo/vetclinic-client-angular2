@@ -9,6 +9,7 @@ import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.c
 import {PatientService} from "../services/patient.service";
 import {EmployeeService} from "../services/employee.service";
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
+import {AnimalService} from "../services/animal.service";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {EmployeePatientsComponent} from "../main/private/employee/patients/emplo
   ],
   providers: [
     PatientService,
-    EmployeeService
+    EmployeeService,
+    AnimalService
   ]
 })
 

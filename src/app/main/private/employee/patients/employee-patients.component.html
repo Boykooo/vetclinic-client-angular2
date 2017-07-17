@@ -4,6 +4,7 @@
   <thead>
   <tr>
     <th>№</th>
+    <th>Клиент</th>
     <th>Возраст питомца</th>
     <th>Описание проблемы</th>
     <th>Статус</th>
@@ -12,6 +13,7 @@
   </thead>
   <tr *ngFor="let patient of patients">
     <th>{{patient.id}}</th>
+    <th>{{getClientName(patient.animal.id)}}</th>
     <th>{{patient.animal.age}}</th>
     <th>{{patient.description}}</th>
     <th>{{patient.status}}</th>

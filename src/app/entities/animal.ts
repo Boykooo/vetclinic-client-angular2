@@ -1,4 +1,5 @@
 
+import {User} from "./user";
 export class Animal{
   id: number;
   name: string;
@@ -6,4 +7,5 @@ export class Animal{
   description: string;
   regDate: Date;
   ill: boolean;
+  client: User;
 }
