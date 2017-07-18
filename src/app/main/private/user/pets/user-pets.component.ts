@@ -39,7 +39,8 @@ export class UserPetsComponent implements OnInit {
     this.animalService.addEntity(this.animal)
       .subscribe(
         response => {
-          if (response.status === "OK") {
+          console.log();
+          if (response.status === "OK" && formData.get('file') !== 'null') {
             this.animalService.uploadImage(response.data, formData);
           }
         }
