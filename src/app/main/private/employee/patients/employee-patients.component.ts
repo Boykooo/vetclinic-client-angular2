@@ -4,6 +4,7 @@ import {PatientService} from "../../../../services/patient.service";
 import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
 import {forEach} from "@angular/router/src/utils/collection";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,8 +19,8 @@ export class EmployeePatientsComponent implements OnInit {
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
-              private animalService: AnimalService) {
-
+              private animalService: AnimalService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,9 +36,10 @@ export class EmployeePatientsComponent implements OnInit {
               this.animalService.getInfoById(patient.animal.id)
                 .subscribe(
                   response => {
+                    let client = response["data"]["client"];
                     this.clientNames.push(
                       patient.animal.id,
-                      response.client.firstName + " " + response.client.lastName
+                      client.firstName + " " + client.lastName
                     );
                   }
                 );
@@ -49,7 +51,7 @@ export class EmployeePatientsComponent implements OnInit {
   }
 
   showDetails(patient: Patient) {
-    console.log(patient);
+    this.router.navigate(['/employee/patients', patient.id]);
   }
 
   getClientName(animalId: number): string {

@@ -58,7 +58,7 @@ export class GenericService<Entity, PK> {
     )
       .map(
         response => {
-          return response.json().data
+          return response.json()
         }
       );
   }

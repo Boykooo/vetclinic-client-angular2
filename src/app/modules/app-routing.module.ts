@@ -12,6 +12,7 @@ import {EmployeePersonalAreaComponent} from "../main/private/employee/employee-p
 import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
 import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.component";
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
+import {PatientManagerComponent} from "../main/private/employee/patients/patientManager/patient-manager.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminAuthComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'user/pets', component: UserPetsComponent},
   {path: 'user/pets/:id', component: PetManagerComponent},
   {path: 'employee/dashboard', component: DashboardComponent},
-  {path: 'employee/patients', component: EmployeePatientsComponent}
+  {path: 'employee/patients', component: EmployeePatientsComponent},
+  {path: 'employee/patients/:id', component: PatientManagerComponent}
 ];
 
 @NgModule({
