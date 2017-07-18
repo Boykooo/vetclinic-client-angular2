@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core'
 import {Animal} from "../../../../entities/animal";
 import {AnimalService} from "../../../../services/animal.service";
 import {Router} from "@angular/router";
-import {Http} from "@angular/http";
 
 @Component({
   selector: 'user-pets',

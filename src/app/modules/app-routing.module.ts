@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {UserTableComponent} from "../admin/userTable/user-table.component";
 import {WelcomeComponent} from "../main/welcome/welcome.component";
 import {EmployeeTableComponent} from "../admin/employeeTable/employee-table.component";
-import {AboutComponent} from "../main/welcome/staticPages/about.component";
+import {AboutComponent} from "../main/welcome/staticPages/about/about.component";
 import {ContactsComponent} from "../main/contacts/contacts.component";
 import {AdminAuthComponent} from "../admin/admin-auth.component";
 import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area.component";

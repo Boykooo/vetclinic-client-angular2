@@ -27,20 +27,6 @@ export class WelcomeComponent {
     let formData = new FormData();
     formData.append('file', inputEl.files.item(0));
 
-    // this.http
-    //   .post(
-    //     "http://localhost:8080/api/animal/3/image",
-    //     formData,
-    //     this.headers
-    //   )
-    //   .map(
-    //     response => {
-    //       return response;
-    //     }
-    //   ).subscribe(
-    //     response => response.json()
-    //   );
-
     this.animalService.uploadImage(3, formData);
   }
 }
