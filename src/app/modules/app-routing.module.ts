@@ -4,7 +4,6 @@ import {UserTableComponent} from "../admin/userTable/user-table.component";
 import {WelcomeComponent} from "../main/welcome/welcome.component";
 import {EmployeeTableComponent} from "../admin/employeeTable/employee-table.component";
 import {AboutComponent} from "../main/welcome/staticPages/about/about.component";
-import {ContactsComponent} from "../main/contacts/contacts.component";
 import {AdminAuthComponent} from "../admin/admin-auth.component";
 import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area.component";
 import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
@@ -13,6 +12,7 @@ import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-mana
 import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.component";
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
 import {PatientManagerComponent} from "../main/private/employee/patients/patientManager/patient-manager.component";
+import {ContactsComponent} from "../main/welcome/staticPages/contacts/contacts.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminAuthComponent},
@@ -27,7 +27,8 @@ const routes: Routes = [
   {path: 'user/pets/:id', component: PetManagerComponent},
   {path: 'employee/dashboard', component: DashboardComponent},
   {path: 'employee/patients', component: EmployeePatientsComponent},
-  {path: 'employee/patients/:id', component: PatientManagerComponent}
+  {path: 'employee/patients/:id', component: PatientManagerComponent},
+  {path: 'contacts', component: ContactsComponent}
 ];
 
 @NgModule({
