@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit {
 
   private user: User;
   private error: string;
+  private userType: string;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -29,7 +30,8 @@ export class NavigationComponent implements OnInit {
       .subscribe(
         body => {
           if (body.status === "OK") {
-            if (body.userType === "CLIENT") {
+            this.userType = body.userType;
+            if (this.userType === "CLIENT") {
               this.router.navigate(['/user']);
             } else {
               this.router.navigate(['/employee']);
@@ -50,7 +52,11 @@ export class NavigationComponent implements OnInit {
   }
 
   goToPersonalArea(): void {
-    this.router.navigate(['/user'])
+    if (this.userType === "CLIENT") {
+      this.router.navigate(['/user']);
+    } else {
+      this.router.navigate(['/employee']);
+    }
   }
 
   logout(): void {

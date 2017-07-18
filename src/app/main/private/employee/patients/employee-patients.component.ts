@@ -3,6 +3,7 @@ import {Patient} from "../../../../entities/patient";
 import {PatientService} from "../../../../services/patient.service";
 import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -13,6 +14,7 @@ import {AnimalService} from "../../../../services/animal.service";
 export class EmployeePatientsComponent implements OnInit {
 
   patients: Patient[];
+  clientNames = [];
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
@@ -26,6 +28,22 @@ export class EmployeePatientsComponent implements OnInit {
         response => {
           console.log(response);
           this.patients = response["patients"];
+
+          this.patients.forEach(
+            patient => {
+
+              this.animalService.getInfoById(patient.animal.id)
+                .subscribe(
+                  response => {
+                    this.clientNames.push(
+                      patient.animal.id,
+                      response.client.firstName + " " + response.client.lastName
+                    );
+                  }
+                );
+
+            }
+          )
         }
       );
   }
@@ -35,12 +53,6 @@ export class EmployeePatientsComponent implements OnInit {
   }
 
   getClientName(animalId: number): string {
-    return this.animalService.getInfoById(animalId)
-      .subscribe(
-        response => {
-          console.log(response);
-          return response.client.firstName + " " + response.client.lastName
-        }
-      ).toString();
+    return this.clientNames[animalId];
   }
 }

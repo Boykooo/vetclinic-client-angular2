@@ -22,9 +22,19 @@
          alt="Изображение отсутствует" width="140" height="120">
 
     <br/>
-    <button class="btn btn-danger" style="margin-top: 30px" data-toggle="modal" data-target="#illModal">
-      Питомец заболел!
-    </button>
+
+    <div *ngIf="!animal.ill; else illBlock">
+      <button class="btn btn-danger" style="margin-top: 30px" data-toggle="modal" data-target="#illModal">
+        Питомец заболел!
+      </button>
+    </div>
+
+    <ng-template #illBlock>
+      <button class="btn btn-danger disabled" style="margin-top: 30px">
+        Питомец заболел!
+      </button>
+    </ng-template>
+
   </div>
 </div>
 
