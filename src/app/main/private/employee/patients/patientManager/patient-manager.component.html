@@ -37,11 +37,14 @@
 </div>
 <br/>
 
-<button class="btn btn-primary" style="margin-top: 20px">
-  Изменить статус пациента
-</button>
+<div class="text-center">
+  <button class="btn btn-primary" style="margin-top: 10px" (click)="done()">
+    Лечение завершено
+  </button>
 
-<br/>
-<button class="btn btn-danger" style="margin-top: 50px">
-  Отказаться от пациента
-</button>
+  <br/>
+  <button class="btn btn-danger" style="margin-top: 30px" (click)="rejection()">
+    Отказаться от пациента
+  </button>
+</div>
+

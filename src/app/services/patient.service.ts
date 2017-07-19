@@ -47,4 +47,18 @@ export class PatientService extends GenericService<Patient, number> {
         }
       );
   }
+
+  getInProgress(): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/progress/',
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
 }

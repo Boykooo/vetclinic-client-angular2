@@ -52,7 +52,8 @@ export class NavigationComponent implements OnInit {
   }
 
   goToPersonalArea(): void {
-    if (this.userType === "CLIENT") {
+    console.log(this.authService.getUserType());
+    if (this.authService.getUserType() === "CLIENT") {
       this.router.navigate(['/user']);
     } else {
       this.router.navigate(['/employee']);

@@ -50,7 +50,26 @@ export class PatientManagerComponent implements OnInit {
       );
   }
 
-  changeStatus(): void {
-
+  done(): void {
+    this.patient.status = "DONE";
+    this.updatePatient();
   }
+
+  rejection(): void {
+    this.patient.status = "REJECTED";
+    this.updatePatient();
+  }
+
+  private updatePatient(): void {
+    this.patientService.updateEntity(this.patient)
+      .subscribe(
+        response => {
+          if (response["status"] !== "OK") {
+            console.log(response["error"]);
+          }
+        }
+      );
+  }
+
+
 }

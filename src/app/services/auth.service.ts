@@ -9,6 +9,7 @@ export class AuthService {
 
   private token: string;
   private headers;
+  private userType: string;
 
   constructor(private http: Http) {
     this.token = null;
@@ -24,6 +25,7 @@ export class AuthService {
       .map(response => {
         let body = response.json();
         this.token = body.token;
+        this.userType = "EMPLOYEE"
         return body;
       });
   }
@@ -37,6 +39,7 @@ export class AuthService {
       .map(response => {
         let body = response.json();
         this.token = body.token;
+        this.userType = body.userType;
         return body;
       });
   }
@@ -51,6 +54,10 @@ export class AuthService {
 
   isLogin(): boolean {
     return this.token != null;
+  }
+
+  getUserType() {
+    return this.userType;
   }
 
 }

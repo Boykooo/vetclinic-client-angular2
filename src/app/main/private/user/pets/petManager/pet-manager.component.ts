@@ -29,8 +29,12 @@ export class PetManagerComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.animalService.getInfoById(+params.get('id')))
-      .subscribe(animal => {
-        this.animal = animal;
+      .subscribe(response => {
+        if (response["status"] === "OK") {
+          this.animal = response["data"];
+        } else {
+          console.log(response["error"])
+        }
       });
   }
 
@@ -42,7 +46,6 @@ export class PetManagerComponent implements OnInit {
             let inputEl: HTMLInputElement = this.inputEl.nativeElement;
             let formData = new FormData();
             formData.append('file', inputEl.files.item(0));
-            console.log("invoke");
             this.animalService.updateImage(this.animal.id, formData)
               .subscribe(
                 response => {

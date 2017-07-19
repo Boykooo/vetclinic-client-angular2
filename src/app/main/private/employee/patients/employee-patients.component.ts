@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
 export class EmployeePatientsComponent implements OnInit {
 
   patients: Patient[];
-  clientNames = [];
+  clientNames = {};
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
@@ -24,26 +24,26 @@ export class EmployeePatientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.getInfo()
+
+    this.patientService.getInProgress()
       .subscribe(
         response => {
-          console.log(response);
-          this.patients = response["patients"];
-
+          this.patients = response["data"];
           this.patients.forEach(
             patient => {
-
               this.animalService.getInfoById(patient.animal.id)
                 .subscribe(
                   response => {
                     let client = response["data"]["client"];
-                    this.clientNames.push(
-                      patient.animal.id,
-                      client.firstName + " " + client.lastName
-                    );
+                    this.clientNames[patient.animal.id] = client.firstName + " " + client.lastName;
+
+                    // this.clientNames.push({
+                    //     key: patient.animal.id,
+                    //     value: client.firstName + " " + client.lastName
+                    //   }
+                    // );
                   }
                 );
-
             }
           )
         }
