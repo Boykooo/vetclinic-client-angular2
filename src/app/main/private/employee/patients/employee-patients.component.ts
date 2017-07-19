@@ -36,12 +36,6 @@ export class EmployeePatientsComponent implements OnInit {
                   response => {
                     let client = response["data"]["client"];
                     this.clientNames[patient.animal.id] = client.firstName + " " + client.lastName;
-
-                    // this.clientNames.push({
-                    //     key: patient.animal.id,
-                    //     value: client.firstName + " " + client.lastName
-                    //   }
-                    // );
                   }
                 );
             }
