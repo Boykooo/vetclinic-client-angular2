@@ -25,4 +25,14 @@ export class ClientService extends GenericService<User, string> {
     )
       .map(response => response.json())
   }
+
+  getLastClientRequest(): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + "/request/last/",
+      this.options
+    )
+      .map(response => response.json());
+  }
 }

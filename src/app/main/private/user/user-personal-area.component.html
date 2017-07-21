@@ -12,4 +12,10 @@
   <button type="button" class="btn btn-primary" [routerLink]="['../user/pets']">
     Питомцы
   </button>
+
+  <h3>Ваше последнее обращение: </h3>
+  <div>
+    Заголовок: {{lastClientRequst.header}}
+    Описание: {{lastClientRequst.description}}
+  </div>
 </div>
