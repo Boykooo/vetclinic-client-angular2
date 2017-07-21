@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../entities/user";
-import {UserService} from "../../services/user.service";
+import {ClientService} from "../../services/client.service";
 
 @Component({
   selector: 'user-table',
   templateUrl: './user-table.component.html',
-  providers: [UserService]
+  providers: [ClientService]
 })
 
 export class UserTableComponent implements OnInit {
   users: User[] = [];
   user: User = new User();
 
-  constructor(private userService: UserService) {
+  constructor(private userService: ClientService) {
   }
 
   ngOnInit(): void {

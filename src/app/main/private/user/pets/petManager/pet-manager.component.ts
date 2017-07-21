@@ -6,6 +6,8 @@ import {AnimalService} from "../../../../../services/animal.service";
 import 'rxjs/add/operator/switchMap'
 import {PatientService} from "../../../../../services/patient.service";
 import {Patient} from "../../../../../entities/patient";
+import {ClientRequestForm} from "../../../../../entities/client-requst-form";
+import {ClientService} from "../../../../../services/client.service";
 
 @Component({
   selector: 'pet-manager',
@@ -16,14 +18,17 @@ export class PetManagerComponent implements OnInit {
 
   animal: Animal;
   patient: Patient;
+  clientRequest: ClientRequestForm;
 
   @ViewChild('fileInput') inputEl: ElementRef;
 
   constructor(private route: ActivatedRoute,
               private animalService: AnimalService,
-              private patientService: PatientService) {
+              private patientService: PatientService,
+  private clientService: ClientService) {
     this.animal = new Animal();
     this.patient = new Patient();
+    this.clientRequest = new ClientRequestForm();
   }
 
   ngOnInit(): void {
@@ -69,5 +74,18 @@ export class PetManagerComponent implements OnInit {
           }
         }
       )
+  }
+
+  sendClientRequest(): void {
+    this.clientRequest.animalId = this.animal.id;
+    console.log(this.clientRequest);
+    this.clientService.sendClientRequest(this.clientRequest)
+      .subscribe(
+        response => {
+          if (response["status"] !== "OK") {
+            console.log(response["error"]);
+          }
+        }
+      );
   }
 }

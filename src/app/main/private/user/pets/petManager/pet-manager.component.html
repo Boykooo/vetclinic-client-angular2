@@ -3,6 +3,10 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
   Редактировать данные
 </button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRequest">
+  Обратиться к врачу
+</button>
 <br/>
 
 <div style="margin-top: 30px" class="panel panel-default text-center col-md-5">
@@ -141,6 +145,56 @@
                         (click)="petFellIll()"
                         style="font-size: 16px">
                   Послать запрос
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addRequest" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12" style="padding-right: 30px;">
+              <form role="form" class="form-horizontal text-center" style="font-size: 16px">
+
+                <div class="form-group">
+                  <label for="age" class="col-sm-2 control-label">
+                    Заголовок
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="email" class="form-control" id="requestHeader" name="requestHeader"
+                           [(ngModel)]="clientRequest.header"
+                           placeholder="Заголовок"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="descr" class="col-sm-2 control-label">
+                    Опишите проблему
+                  </label>
+                  <textarea class="form-control" style="resize: none; width: 400px" id="descr"
+                            name="descr" rows="5" maxlength="900"
+                            [(ngModel)]="clientRequest.description">
+                    </textarea>
+                </div>
+                <button class="btn btn-success"
+                        data-dismiss="modal" aria-label="Close"
+                        (click)="sendClientRequest()"
+                        style="font-size: 16px">
+                  Отправить сообщение
                 </button>
               </form>
             </div>

@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../entities/user";
-import {UserService} from "../../../services/user.service";
+import {ClientService} from "../../../services/client.service";
 
 @Component({
   selector: 'user-personal-area',
   templateUrl: './user-personal-area.component.html',
-  providers: [UserService]
+  providers: [ClientService]
 })
 
 export class UserPersonalAreaComponent implements OnInit {
   public user: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: ClientService) {
     this.user = new User();
   }
 

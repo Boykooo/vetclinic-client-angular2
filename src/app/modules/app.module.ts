@@ -8,7 +8,7 @@ import {AdminPanelModule} from "./admin-panel.module";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {AboutComponent} from "../main/welcome/staticPages/about/about.component";
-import {UserPersonalAreaModule} from "./user-personal-area.module";
+import {UserPersonalAreaModule} from "./client-personal-area.module";
 import {NavigationModule} from "./navigation.module";
 import {AuthService} from "../services/auth.service";
 import {EmployeeModule} from "./employee-module";

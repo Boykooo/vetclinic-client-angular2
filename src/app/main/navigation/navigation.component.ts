@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {UserService} from "../../services/user.service";
+import {ClientService} from "../../services/client.service";
 import {User} from "../../entities/user";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'navigation',
   templateUrl: './navigation.component.html',
-  providers: [UserService]
+  providers: [ClientService]
 })
 
 export class NavigationComponent implements OnInit {
@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
   private error: string;
   private userType: string;
 
-  constructor(private userService: UserService,
+  constructor(private userService: ClientService,
               private authService: AuthService,
               private router: Router) {
   }
