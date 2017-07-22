@@ -11,11 +11,11 @@ import {ClientRequestInfo} from "../../../entities/client-request-info";
 
 export class UserPersonalAreaComponent implements OnInit {
   user: User;
-  lastClientRequst: ClientRequestInfo;
+  lastClientRequest: ClientRequestInfo;
 
   constructor(private clientService: ClientService) {
     this.user = new User();
-    this.lastClientRequst = new ClientRequestInfo();
+    this.lastClientRequest = new ClientRequestInfo();
   }
 
   ngOnInit(): void {
@@ -27,11 +27,15 @@ export class UserPersonalAreaComponent implements OnInit {
       .subscribe(
         response => {
           if (response["status"] === "OK") {
-            this.lastClientRequst = response["data"];
+            this.lastClientRequest = response["data"];
           } else {
             console.log(response["error"]);
           }
         }
       );
+  }
+
+  showDetails(): void {
+
   }
 }

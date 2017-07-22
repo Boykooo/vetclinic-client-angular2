@@ -5,7 +5,7 @@ export class ClientRequestInfo {
   header: string;
   description: string;
   employeeEmail: string;
-  requestDate: string;
+  requestDate: Date;
 
   messages: Message[];
 }

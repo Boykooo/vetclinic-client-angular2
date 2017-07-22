@@ -1,5 +1,5 @@
 export class Message {
   email: string;
   message: string;
-  date: string;
+  date: Date;
 }
