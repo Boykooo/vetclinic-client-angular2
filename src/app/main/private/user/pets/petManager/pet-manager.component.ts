@@ -6,7 +6,7 @@ import {AnimalService} from "../../../../../services/animal.service";
 import 'rxjs/add/operator/switchMap'
 import {PatientService} from "../../../../../services/patient.service";
 import {Patient} from "../../../../../entities/patient";
-import {ClientRequestForm} from "../../../../../entities/client-requst-form";
+import {IssueForm} from "../../../../../entities/issue-form";
 import {ClientService} from "../../../../../services/client.service";
 
 @Component({
@@ -18,7 +18,7 @@ export class PetManagerComponent implements OnInit {
 
   animal: Animal;
   patient: Patient;
-  clientRequest: ClientRequestForm;
+  clientRequest: IssueForm;
 
   @ViewChild('fileInput') inputEl: ElementRef;
 
@@ -28,7 +28,7 @@ export class PetManagerComponent implements OnInit {
   private clientService: ClientService) {
     this.animal = new Animal();
     this.patient = new Patient();
-    this.clientRequest = new ClientRequestForm();
+    this.clientRequest = new IssueForm();
   }
 
   ngOnInit(): void {

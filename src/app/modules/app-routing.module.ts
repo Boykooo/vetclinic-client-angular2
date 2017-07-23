@@ -13,6 +13,7 @@ import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.c
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
 import {PatientManagerComponent} from "../main/private/employee/patients/patientManager/patient-manager.component";
 import {ContactsComponent} from "../main/welcome/staticPages/contacts/contacts.component";
+import {IssueComponent} from "../main/issue/issue.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminAuthComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'employee/dashboard', component: DashboardComponent},
   {path: 'employee/patients', component: EmployeePatientsComponent},
   {path: 'employee/patients/:id', component: PatientManagerComponent},
-  {path: 'contacts', component: ContactsComponent}
+  {path: 'contacts', component: ContactsComponent},
+  {path: 'issue/:id', component: IssueComponent}
 ];
 
 @NgModule({

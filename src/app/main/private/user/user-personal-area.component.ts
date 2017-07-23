@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../entities/user";
 import {ClientService} from "../../../services/client.service";
-import {ClientRequest} from "../../../entities/client-request";
-import {ClientRequestInfo} from "../../../entities/client-request-info";
+import {Issue} from "../../../entities/issue";
+import {IssueInfo} from "../../../entities/issueInfo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'user-personal-area',
@@ -11,11 +12,12 @@ import {ClientRequestInfo} from "../../../entities/client-request-info";
 
 export class UserPersonalAreaComponent implements OnInit {
   user: User;
-  lastClientRequest: ClientRequestInfo;
+  lastIssue: IssueInfo;
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService,
+              private router: Router) {
     this.user = new User();
-    this.lastClientRequest = new ClientRequestInfo();
+    this.lastIssue = new IssueInfo();
   }
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class UserPersonalAreaComponent implements OnInit {
       .subscribe(
         response => {
           if (response["status"] === "OK") {
-            this.lastClientRequest = response["data"];
+            this.lastIssue = response["data"];
           } else {
             console.log(response["error"]);
           }
@@ -36,6 +38,7 @@ export class UserPersonalAreaComponent implements OnInit {
   }
 
   showDetails(): void {
-
+    console.log(this.lastIssue);
+    this.router.navigate(['/issue', this.lastIssue.id]);
   }
 }

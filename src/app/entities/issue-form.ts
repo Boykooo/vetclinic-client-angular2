@@ -1,4 +1,4 @@
-export class ClientRequestForm {
+export class IssueForm {
   clientEmail: string;
   animalId: number;
   header: string;

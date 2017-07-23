@@ -13,13 +13,15 @@ import {NavigationModule} from "./navigation.module";
 import {AuthService} from "../services/auth.service";
 import {EmployeeModule} from "./employee-module";
 import {ContactsComponent} from "../main/welcome/staticPages/contacts/contacts.component";
+import {IssueComponent} from "../main/issue/issue.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     AboutComponent,
-    ContactsComponent
+    ContactsComponent,
+    IssueComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import {GenericService} from "./generic.service";
 import {RequestConst} from "../util/request-const";
 import {AuthService} from "./auth.service";
-import {ClientRequestForm} from "../entities/client-requst-form";
+import {IssueForm} from "../entities/issue-form";
 
 @Injectable()
 export class ClientService extends GenericService<User, string> {
@@ -15,7 +15,7 @@ export class ClientService extends GenericService<User, string> {
     super(http, RequestConst.PATH_TO_USER_API, authService);
   }
 
-  sendClientRequest(clientRequestForm: ClientRequestForm): any {
+  sendClientRequest(clientRequestForm: IssueForm): any {
     this.refreshToken();
 
     return this.http.post(
