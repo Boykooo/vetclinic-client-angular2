@@ -14,6 +14,7 @@ import {AuthService} from "../services/auth.service";
 import {EmployeeModule} from "./employee-module";
 import {ContactsComponent} from "../main/welcome/staticPages/contacts/contacts.component";
 import {IssueComponent} from "../main/issue/issue.component";
+import {IssueService} from "../services/issue.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import {IssueComponent} from "../main/issue/issue.component";
     NavigationModule,
     EmployeeModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

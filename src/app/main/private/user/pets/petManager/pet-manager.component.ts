@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {Animal} from "../../../../../entities/animal";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {AnimalService} from "../../../../../services/animal.service";
 
 import 'rxjs/add/operator/switchMap'
@@ -8,6 +8,8 @@ import {PatientService} from "../../../../../services/patient.service";
 import {Patient} from "../../../../../entities/patient";
 import {IssueForm} from "../../../../../entities/issue-form";
 import {ClientService} from "../../../../../services/client.service";
+import {IssueInfo} from "../../../../../entities/issueInfo";
+import {IssueService} from "../../../../../services/issue.service";
 
 @Component({
   selector: 'pet-manager',
@@ -19,17 +21,21 @@ export class PetManagerComponent implements OnInit {
   animal: Animal;
   patient: Patient;
   clientRequest: IssueForm;
+  issues: IssueInfo[];
 
   @ViewChild('fileInput') inputEl: ElementRef;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private animalService: AnimalService,
               private patientService: PatientService,
-  private clientService: ClientService) {
+              private issueService: IssueService,
+              private clientService: ClientService) {
     this.animal = new Animal();
     this.animal.patient = new Patient();
     this.patient = new Patient();
     this.clientRequest = new IssueForm();
+    this.issues = [];
   }
 
   ngOnInit(): void {
@@ -38,7 +44,17 @@ export class PetManagerComponent implements OnInit {
       .subscribe(response => {
         if (response["status"] === "OK") {
           this.animal = response["data"];
-          console.log(this.animal);
+
+          this.issueService.getAllIssueByAnimalId(this.animal.id)
+            .subscribe(
+              response => {
+                if (response["status"] === "OK") {
+                  this.issues = response["data"];
+                } else {
+                  console.log(response["error"]);
+                }
+              }
+            )
         } else {
           console.log(response["error"])
         }
@@ -90,4 +106,9 @@ export class PetManagerComponent implements OnInit {
         }
       );
   }
+
+  showIssueDetails(issueId: number): void {
+    this.router.navigate(['/issue', issueId]);
+  }
+
 }

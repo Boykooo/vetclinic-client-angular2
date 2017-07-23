@@ -6,8 +6,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
   selector: "issue",
-  templateUrl: "./issue.component.html",
-  providers: [IssueService]
+  templateUrl: "./issue.component.html"
 })
 
 export class IssueComponent implements OnInit {

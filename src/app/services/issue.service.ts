@@ -38,4 +38,16 @@ export class IssueService extends GenericService<Issue, any> {
       );
   }
 
+  getAllIssueByAnimalId(id: number): any {
+    this.refreshToken();
+
+    return this.http.get(
+      "http://localhost:8080/api/issue/animal/  " + id + "/",
+      this.options
+    )
+      .map(
+        response => response.json()
+      );
+  }
+
 }
