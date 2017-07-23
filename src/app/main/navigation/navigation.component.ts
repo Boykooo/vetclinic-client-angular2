@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {ClientService} from "../../services/client.service";
-import {User} from "../../entities/user";
+import {Client} from "../../entities/client";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 
 export class NavigationComponent implements OnInit {
 
-  private user: User;
+  private user: Client;
   private error: string;
   private userType: string;
 
@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = new User();
+    this.user = new Client();
   }
 
   login(): void {

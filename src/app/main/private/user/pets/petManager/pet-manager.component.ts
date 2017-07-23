@@ -27,6 +27,7 @@ export class PetManagerComponent implements OnInit {
               private patientService: PatientService,
   private clientService: ClientService) {
     this.animal = new Animal();
+    this.animal.patient = new Patient();
     this.patient = new Patient();
     this.clientRequest = new IssueForm();
   }
@@ -37,6 +38,7 @@ export class PetManagerComponent implements OnInit {
       .subscribe(response => {
         if (response["status"] === "OK") {
           this.animal = response["data"];
+          console.log(this.animal);
         } else {
           console.log(response["error"])
         }

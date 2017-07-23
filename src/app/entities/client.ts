@@ -1,6 +1,6 @@
 import {Animal} from "./animal";
 
-export class User {
+export class Client {
   email: string;
   phoneNumber: string;
   firstName: string;

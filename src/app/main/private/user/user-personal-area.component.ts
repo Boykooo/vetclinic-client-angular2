@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../entities/user";
+import {Client} from "../../../entities/client";
 import {ClientService} from "../../../services/client.service";
 import {Issue} from "../../../entities/issue";
 import {IssueInfo} from "../../../entities/issueInfo";
@@ -11,12 +11,12 @@ import {Router} from "@angular/router";
 })
 
 export class UserPersonalAreaComponent implements OnInit {
-  user: User;
+  user: Client;
   lastIssue: IssueInfo;
 
   constructor(private clientService: ClientService,
               private router: Router) {
-    this.user = new User();
+    this.user = new Client();
     this.lastIssue = new IssueInfo();
   }
 

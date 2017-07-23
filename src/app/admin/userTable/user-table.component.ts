@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../entities/user";
+import {Client} from "../../entities/client";
 import {ClientService} from "../../services/client.service";
 
 @Component({
@@ -9,8 +9,8 @@ import {ClientService} from "../../services/client.service";
 })
 
 export class UserTableComponent implements OnInit {
-  users: User[] = [];
-  user: User = new User();
+  users: Client[] = [];
+  user: Client = new Client();
 
   constructor(private userService: ClientService) {
   }

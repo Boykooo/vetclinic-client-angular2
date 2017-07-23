@@ -5,7 +5,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 
 import 'rxjs/add/operator/switchMap'
 import {Animal} from "../../../../../entities/animal";
-import {User} from "../../../../../entities/user";
+import {Client} from "../../../../../entities/client";
 import {AnimalService} from "../../../../../services/animal.service";
 
 @Component({
@@ -16,14 +16,14 @@ import {AnimalService} from "../../../../../services/animal.service";
 export class PatientManagerComponent implements OnInit {
 
   patient: Patient;
-  user: User;
+  user: Client;
 
   constructor(private patientService: PatientService,
               private animalService: AnimalService,
               private route: ActivatedRoute) {
     this.patient = new Patient();
     this.patient.animal = new Animal();
-    this.user = new User();
+    this.user = new Client();
   }
 
   ngOnInit(): void {

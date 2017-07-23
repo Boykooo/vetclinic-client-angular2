@@ -25,7 +25,6 @@ export class UserPetsComponent implements OnInit {
     this.animalService.getAll().subscribe(
       animals => {
         this.animals = animals;
-        console.log(animals);
       }
     );
   }

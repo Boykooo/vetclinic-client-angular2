@@ -4,9 +4,11 @@
   Редактировать данные
 </button>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRequest">
-  Обратиться к врачу
-</button>
+<div *ngIf="animal.patient.employee != null">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRequest">
+    Обратиться к лечащему врачу
+  </button>
+</div>
 <br/>
 
 <div style="margin-top: 30px" class="panel panel-default text-center col-md-5">

@@ -2,7 +2,7 @@ import {Injectable, OnInit} from "@angular/core";
 import {Http} from "@angular/http";
 import {Employee} from "../entities/employee";
 import {RequestConst} from "../util/request-const";
-import {User} from "../entities/user";
+import {Client} from "../entities/client";
 
 @Injectable()
 export class AuthService {
@@ -30,7 +30,7 @@ export class AuthService {
       });
   }
 
-  userAuth(user: User): any {
+  userAuth(user: Client): any {
     return this.http
       .post(RequestConst.PATH_TO_USER_AUTH,
         user,

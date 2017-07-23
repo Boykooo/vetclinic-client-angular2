@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {User} from "../entities/user";
+import {Client} from "../entities/client";
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
@@ -9,7 +9,7 @@ import {AuthService} from "./auth.service";
 import {IssueForm} from "../entities/issue-form";
 
 @Injectable()
-export class ClientService extends GenericService<User, string> {
+export class ClientService extends GenericService<Client, string> {
 
   constructor(http: Http, authService: AuthService) {
     super(http, RequestConst.PATH_TO_USER_API, authService);
