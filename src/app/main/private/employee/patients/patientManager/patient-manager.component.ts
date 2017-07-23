@@ -1,12 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {Patient} from "../../../../../entities/patient";
 import {PatientService} from "../../../../../services/patient.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
 import 'rxjs/add/operator/switchMap'
 import {Animal} from "../../../../../entities/animal";
 import {Client} from "../../../../../entities/client";
 import {AnimalService} from "../../../../../services/animal.service";
+import {IssueService} from "../../../../../services/issue.service";
+import {IssueInfo} from "../../../../../entities/issueInfo";
 
 @Component({
   selector: "patient-manager",
@@ -16,14 +18,18 @@ import {AnimalService} from "../../../../../services/animal.service";
 export class PatientManagerComponent implements OnInit {
 
   patient: Patient;
-  user: Client;
+  client: Client;
+  issues: IssueInfo[];
 
   constructor(private patientService: PatientService,
               private animalService: AnimalService,
+              private issueService: IssueService,
+              private router: Router,
               private route: ActivatedRoute) {
     this.patient = new Patient();
     this.patient.animal = new Animal();
-    this.user = new Client();
+    this.client = new Client();
+    this.issues = [];
   }
 
   ngOnInit(): void {
@@ -33,21 +39,51 @@ export class PatientManagerComponent implements OnInit {
         response => {
           if (response["status"] === "OK") {
             this.patient = response["data"];
+
             this.animalService.getInfoById(this.patient.animal.id)
               .subscribe(
                 response => {
                   if (response["status"] === "OK") {
-                    this.user = response["data"]["client"];
+                    this.client = response["data"]["client"];
                   } else {
                     console.log(response["error"]);
+                    return;
                   }
                 }
               );
+
+            this.issueService.getAllByAnimalIdAndEmail(this.patient.animal.id)
+              .subscribe(
+                response => {
+                  if (response["status"] === "OK") {
+                    this.issues = response["data"];
+                  } else {
+                    console.log(response["error"]);
+                    return;
+                  }
+                }
+              )
+
           } else {
             console.log(response["error"]);
+            return;
           }
         }
       );
+
+    // this.issueService.getInvolvedByEmail()
+    //   .subscribe(
+    //     response => {
+    //       if (response["status"] === "OK") {
+    //         this.issues = response["data"];
+    //       } else {
+    //         console.log(response["error"]);
+    //         return;
+    //       }
+    //     }
+    //   );
+
+
   }
 
   done(): void {
@@ -71,5 +107,7 @@ export class PatientManagerComponent implements OnInit {
       );
   }
 
-
+  showIssueDetails(id: number): void {
+    this.router.navigate(['/issue', id]);
+  }
 }

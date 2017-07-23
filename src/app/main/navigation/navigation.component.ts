@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
           if (body.status === "OK") {
             this.userType = body.userType;
             if (this.userType === "CLIENT") {
-              this.router.navigate(['/user']);
+              this.router.navigate(['/client']);
             } else {
               this.router.navigate(['/employee']);
             }
@@ -54,7 +54,7 @@ export class NavigationComponent implements OnInit {
   goToPersonalArea(): void {
     console.log(this.authService.getUserType());
     if (this.authService.getUserType() === "CLIENT") {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/client']);
     } else {
       this.router.navigate(['/employee']);
     }

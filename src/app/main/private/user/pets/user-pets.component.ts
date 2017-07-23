@@ -46,7 +46,7 @@ export class UserPetsComponent implements OnInit {
   }
 
   showDetails(animal: Animal): void {
-    this.router.navigate(['/user/pets', animal.id]);
+    this.router.navigate(['/client/pets', animal.id]);
   }
 
   getStatus(isIll: boolean): string {

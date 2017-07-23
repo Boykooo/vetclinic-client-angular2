@@ -5,12 +5,12 @@
   <div class="container">
     <div style="margin-top: 30px" class="panel panel-default text-center col-md-12">
       <div class="panel-heading text-center">
-        <h4> Клиент: {{user.firstName + " " + user.lastName}} </h4>
+        <h4> Клиент: {{client.firstName + " " + client.lastName}} </h4>
       </div>
 
       <div class="panel-body" style="font-size: 16px;">
-        Номер телефона: {{user.phoneNumber}} <br/>
-        E-mail: {{user.email}}
+        Номер телефона: {{client.phoneNumber}} <br/>
+        E-mail: {{client.email}}
       </div>
     </div>
   </div>
@@ -46,5 +46,42 @@
   <button class="btn btn-danger" style="margin-top: 30px" (click)="rejection()">
     Отказаться от пациента
   </button>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="com-md-12">
+      <h3>История обращений:</h3>
+
+      <div *ngFor="let issue of issues">
+        <div class="container-fluid">
+          <div class="container">
+            <div style="margin-top: 30px" class="panel panel-default text-center col-md-12">
+              <div class="panel-heading text-center">
+                {{issue.header}}
+              </div>
+
+              <div class="panel-body" style="font-size: 16px;">
+                Дата обращения: {{issue.requestDate | date}}
+
+                <div style="margin-top: 10px">
+                  <button class="btn btn-primary" (click)="showIssueDetails(issue.id)">
+                    Подробнее
+                  </button>
+                </div>
+
+                <ng-template #issueClosed>
+          <span style="background-color: red">
+            Обращение закрыто
+          </span>
+                </ng-template>
+
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 

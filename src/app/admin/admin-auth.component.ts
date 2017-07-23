@@ -26,7 +26,7 @@ export class AdminAuthComponent implements OnInit {
     this.authService.adminAuth(this.employee).subscribe(
       body => {
         if (body.status === "OK") {
-          this.router.navigate(['admin/user']);
+          this.router.navigate(['admin/client']);
         }
         else {
           this.error = body.error;

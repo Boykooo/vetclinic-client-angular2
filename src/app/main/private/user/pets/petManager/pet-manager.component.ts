@@ -45,7 +45,7 @@ export class PetManagerComponent implements OnInit {
         if (response["status"] === "OK") {
           this.animal = response["data"];
 
-          this.issueService.getAllIssueByAnimalId(this.animal.id)
+          this.issueService.getAllByAnimalId(this.animal.id)
             .subscribe(
               response => {
                 if (response["status"] === "OK") {

@@ -38,7 +38,7 @@ export class IssueService extends GenericService<Issue, any> {
       );
   }
 
-  getAllIssueByAnimalId(id: number): any {
+  getAllByAnimalId(id: number): any {
     this.refreshToken();
 
     return this.http.get(
@@ -50,4 +50,27 @@ export class IssueService extends GenericService<Issue, any> {
       );
   }
 
+  getInvolvedByEmail(): any {
+    this.refreshToken();
+
+    return this.http.get(
+      "http://localhost:8080/api/issue/involvedByEmail",
+      this.options
+    )
+      .map(
+        response => response.json()
+      );
+  }
+
+  getAllByAnimalIdAndEmail(id: number): any {
+    this.refreshToken();
+
+    return this.http.get(
+      "http://localhost:8080/api/issue/email/" + id + "/",
+      this.options
+    )
+      .map(
+        response => response.json()
+      );
+  }
 }
