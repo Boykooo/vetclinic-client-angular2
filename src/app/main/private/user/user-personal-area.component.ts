@@ -39,6 +39,6 @@ export class UserPersonalAreaComponent implements OnInit {
 
   showDetails(): void {
     console.log(this.lastIssue);
-    this.router.navigate(['/issue', this.lastIssue.id]);
+    this.router.navigate(['/issue', this.lastIssue.issueId]);
   }
 }

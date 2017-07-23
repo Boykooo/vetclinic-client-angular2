@@ -2,7 +2,7 @@ import {Message} from "./message";
 
 export class IssueInfo {
 
-  id: number;
+  issueId: number;
   header: string;
   description: string;
   employeeEmail: string;

@@ -56,7 +56,7 @@
             Дата обращения: {{issue.requestDate | date}}
 
             <div style="margin-top: 10px" *ngIf="issue.status == 'OPEN' else issueClosed">
-              <button class="btn btn-primary" (click)="showIssueDetails(issue.id)">
+              <button class="btn btn-primary" (click)="showIssueDetails(issue.issueId)">
                 Подробнее
               </button>
             </div>

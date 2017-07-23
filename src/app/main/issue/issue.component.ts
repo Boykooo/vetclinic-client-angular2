@@ -26,6 +26,7 @@ export class IssueComponent implements OnInit {
       .switchMap((params: ParamMap) => this.issueService.getIssueInfo(+params.get('id')))
       .subscribe(
         response => {
+          console.log(response);
           if (response["status"] === "OK") {
             this.issueInfo = response["data"];
           }
@@ -34,7 +35,7 @@ export class IssueComponent implements OnInit {
   }
 
   sendMessage(): void {
-    this.issueService.sendMessage(this.issueInfo.id, this.message)
+    this.issueService.sendMessage(this.issueInfo.issueId, this.message)
       .subscribe();
   }
 }

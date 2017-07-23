@@ -50,11 +50,11 @@ export class IssueService extends GenericService<Issue, any> {
       );
   }
 
-  getInvolvedByEmail(): any {
+  getLastChangeByEmail(): any {
     this.refreshToken();
 
     return this.http.get(
-      "http://localhost:8080/api/issue/involvedByEmail",
+      "http://localhost:8080/api/issue/lastChange/",
       this.options
     )
       .map(
