@@ -3,6 +3,7 @@ import {ClientService} from "../../services/client.service";
 import {Client} from "../../entities/client";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {RegistrationForm} from "../../entities/registration-form";
 
 @Component({
   selector: 'navigation',
@@ -12,9 +13,10 @@ import {Router} from "@angular/router";
 
 export class NavigationComponent implements OnInit {
 
-  private user: Client;
-  private error: string;
-  private userType: string;
+  registrationForm: RegistrationForm;
+  user: Client;
+  error: string;
+  userType: string;
 
   constructor(private userService: ClientService,
               private authService: AuthService,
@@ -23,6 +25,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new Client();
+    this.registrationForm = new RegistrationForm();
   }
 
   login(): void {
@@ -44,7 +47,8 @@ export class NavigationComponent implements OnInit {
   }
 
   registr(): void {
-    this.userService.addEntity(this.user)
+    this.authService.registration(this.registrationForm)
+      .subscribe();
   }
 
   isLogin(): boolean {

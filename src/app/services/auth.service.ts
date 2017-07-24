@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {Employee} from "../entities/employee";
 import {RequestConst} from "../util/request-const";
 import {Client} from "../entities/client";
+import {RegistrationForm} from "../entities/registration-form";
 
 @Injectable()
 export class AuthService {
@@ -34,6 +35,21 @@ export class AuthService {
     return this.http
       .post(RequestConst.PATH_TO_USER_AUTH,
         user,
+        this.headers
+      )
+      .map(response => {
+        let body = response.json();
+        this.token = body.token;
+        this.userType = body.userType;
+        return body;
+      });
+  }
+
+  registration(registrationForm: RegistrationForm): any {
+    return this.http
+      .post(
+        "http://localhost:8080/auth/registration",
+        registrationForm,
         this.headers
       )
       .map(response => {

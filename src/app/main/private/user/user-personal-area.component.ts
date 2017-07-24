@@ -11,18 +11,24 @@ import {Router} from "@angular/router";
 })
 
 export class UserPersonalAreaComponent implements OnInit {
-  user: Client;
+  client: Client;
   lastIssue: IssueInfo;
 
   constructor(private clientService: ClientService,
               private router: Router) {
-    this.user = new Client();
-    this.lastIssue = new IssueInfo();
+
   }
 
   ngOnInit(): void {
+
+    this.client = new Client();
+    this.lastIssue = new IssueInfo();
+
     this.clientService.getInfo().subscribe(
-      user => this.user = user
+      response => {
+        this.client = response;
+        console.log(response);
+      }
     );
 
     this.clientService.getLastClientRequest()

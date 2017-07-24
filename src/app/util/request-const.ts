@@ -2,6 +2,7 @@ import {Headers} from "@angular/http";
 
 export class RequestConst {
   public static PATH_TO_EMPLOYEE_API = 'http://localhost:8080/api/employee';
+  public static PATH_TO_AUTH_API = 'http://localhost:8080/auth';
   public static PATH_TO_USER_API = 'http://localhost:8080/api/client';
   public static PATH_TO_ANIMAL_API = 'http://localhost:8080/api/animal';
   public static PATH_TO_PATIENT_API = 'http://localhost:8080/api/patient';
