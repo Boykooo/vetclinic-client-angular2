@@ -21,17 +21,19 @@
     Пациенты
   </button>
 
-
-  <h3>Ваше последнее обращение, в котором вы делали изменения: </h3>
-
-  <div class="panel panel-default text-center col-md-4" *ngIf="lastIssue.employeeEmail != null">
-    <div class="panel-heading text-center">
-      <h4> Заголовок обращения: {{lastIssue.header}} </h4>
-    </div>
-    <div class="panel-body" style="font-size: 16px;">
-      <button class="btn btn-primary" (click)="showDetails()">
-        Подробнее
-      </button>
+  <h3>Ваши 3 последние обращения, в которых вы делали изменения: </h3>
+  <div *ngFor="let lastIssue of lastIssues">
+    <div class="container-fluid">
+        <div class="panel panel-default text-center col-md-8" *ngIf="lastIssue.employeeEmail != null">
+          <div class="panel-heading text-center">
+            <h4> Заголовок обращения: {{lastIssue.header}} </h4>
+          </div>
+          <div class="panel-body" style="font-size: 16px;">
+            <button class="btn btn-primary" (click)="showDetails(lastIssue.issueId)">
+              Подробнее
+            </button>
+          </div>
+      </div>
     </div>
   </div>
 

@@ -14,13 +14,13 @@ import {Router} from "@angular/router";
 export class EmployeePersonalAreaComponent implements OnInit {
 
   employee: Employee;
-  lastIssue: IssueInfo;
+  lastIssues: IssueInfo[];
 
   constructor(private employeeService: EmployeeService,
               private issueService: IssueService,
               private router: Router) {
     this.employee = new Employee();
-    this.lastIssue = new IssueInfo();
+    this.lastIssues = [];
   }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class EmployeePersonalAreaComponent implements OnInit {
         response => {
           console.log(response);
           if (response["status"] === "OK") {
-            this.lastIssue = response["data"];
+            this.lastIssues = response["data"];
           } else {
             console.log(response["error"]);
             return;
@@ -46,7 +46,7 @@ export class EmployeePersonalAreaComponent implements OnInit {
       )
   }
 
-  showDetails(): void {
-      this.router.navigate(['/issue', this.lastIssue.issueId]);
+  showDetails(issueId: number): void {
+      this.router.navigate(['/issue', issueId]);
   }
 }
