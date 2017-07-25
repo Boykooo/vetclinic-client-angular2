@@ -1,7 +1,8 @@
 <navigation></navigation>
 
 <label>Имя клиента:
-  <input id='input' type='text' #val list="browsers" name="myBrowser" (keyup.enter)="onSelect(val)" (keyup)="onInput(val)"/></label>
+  <!--(keyup)="onInput(val)"-->
+  <input id='input' type='text' #val list="browsers" name="myBrowser" (keyup.enter)="onSelect(val)" /></label>
 <datalist id="browsers">
     <option *ngFor="let esPatient of esPatients" (value)="esPatient.clientName" [ngValue]="esPatient.clientName"> {{esPatient.clientName}} </option>
 </datalist>

@@ -73,11 +73,11 @@ export class EmployeePatientsComponent implements OnInit {
 
   onInput(inputBox: any) {
 
-    for (let esPatient of this.esPatients) {
-      if ((_.isEqual(esPatient.clientName, inputBox.value))) {
-        return;
-      }
-    }
+    // for (let esPatient of this.esPatients) {
+    //   if ((_.isEqual(esPatient.clientName, inputBox.value))) {
+    //     return;
+    //   }
+    // }
 
     // this.esService.searchByPrefix(inputBox.value)
     //   .subscribe(
@@ -88,6 +88,11 @@ export class EmployeePatientsComponent implements OnInit {
   }
 
   onSelect(inputBox: any) {
-    console.log("select", inputBox.value);
+    for (let esPatient of this.esPatients) {
+      if ((_.isEqual(esPatient.clientName, inputBox.value))) {
+        this.router.navigate(['/employee/patients', esPatient.patientId]);
+        break;
+      }
+    }
   }
 }
