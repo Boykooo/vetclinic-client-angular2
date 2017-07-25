@@ -3,9 +3,12 @@ import {Patient} from "../../../../entities/patient";
 import {PatientService} from "../../../../services/patient.service";
 import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
-import {forEach} from "@angular/router/src/utils/collection";
 import {Router} from "@angular/router";
 import {PagerService} from "../../../../services/pager-service.service";
+
+import * as _ from "lodash";
+import {EsService} from "../../../../services/es.service";
+import {EsPatient} from "../../../../entities/es-patient";
 
 
 @Component({
@@ -23,11 +26,14 @@ export class EmployeePatientsComponent implements OnInit {
   // pager object
   pager: any = {};
 
+  esPatients: EsPatient[];
+
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
               private animalService: AnimalService,
               private router: Router,
-              private pagerService: PagerService) {
+              private pagerService: PagerService,
+              private esService: EsService) {
   }
 
   ngOnInit(): void {
@@ -46,13 +52,24 @@ export class EmployeePatientsComponent implements OnInit {
           }
         }
       );
+
+    this.esService.getEmployeePatients()
+      .subscribe(
+        response => {
+          if (response["status"] === "OK") {
+            console.log("asd", response);
+            this.esPatients = response["data"];
+          } else {
+            console.log(response["error"]);
+          }
+        }
+      )
   }
 
   setPage(page: number): void {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-
     // get pager object from service
     this.pager = this.pagerService.getPager(this.patientsCount, page);
 
@@ -66,6 +83,18 @@ export class EmployeePatientsComponent implements OnInit {
           }
         }
       );
+
+    this.esService.getEmployeePatients()
+      .subscribe(
+        response => {
+          if (response["status"] === "OK") {
+            console.log("asd", response);
+            this.esPatients = response["data"];
+          } else {
+            console.log(response["error"]);
+          }
+        }
+      )
   }
 
   showDetails(patient: Patient) {
@@ -74,5 +103,15 @@ export class EmployeePatientsComponent implements OnInit {
 
   getClientName(animalId: number): string {
     return this.clientNames[animalId];
+  }
+
+  onSelect(inputBox: any) {
+    for (let esPatient of this.esPatients) {
+      if ((_.isEqual(esPatient.clientName, inputBox.value))) {
+        console.log(esPatient.patientId);
+        this.router.navigate(['/employee/patients', esPatient.patientId]);
+        break;
+      }
+    }
   }
 }

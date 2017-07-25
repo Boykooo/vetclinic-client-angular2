@@ -11,6 +11,7 @@ import {EmployeeService} from "../services/employee.service";
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
 import {AnimalService} from "../services/animal.service";
 import {PatientManagerComponent} from "../main/private/employee/patients/patientManager/patient-manager.component";
+import {EsService} from "../services/es.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {PatientManagerComponent} from "../main/private/employee/patients/patient
   providers: [
     PatientService,
     EmployeeService,
-    AnimalService
+    AnimalService,
+    EsService
   ]
 })
 

@@ -49,4 +49,6 @@ export class EmployeePersonalAreaComponent implements OnInit {
   showDetails(issueId: number): void {
       this.router.navigate(['/issue', issueId]);
   }
+
+
 }
