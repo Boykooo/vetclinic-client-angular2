@@ -5,6 +5,7 @@ import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
 import {forEach} from "@angular/router/src/utils/collection";
 import {Router} from "@angular/router";
+import {PagerService} from "../../../../services/pager-service.service";
 
 
 @Component({
@@ -14,32 +15,55 @@ import {Router} from "@angular/router";
 
 export class EmployeePatientsComponent implements OnInit {
 
-  patients: Patient[];
+  pagedPatients: Patient[];
   clientNames = {};
+
+  patientsCount: number;
+
+  // pager object
+  pager: any = {};
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
               private animalService: AnimalService,
-              private router: Router) {
+              private router: Router,
+              private pagerService: PagerService) {
   }
 
   ngOnInit(): void {
 
-    this.patientService.getInProgress()
+    this.pagedPatients = [];
+
+    this.patientService.getCount()
       .subscribe(
         response => {
-          this.patients = response["data"];
-          this.patients.forEach(
-            patient => {
-              this.animalService.getInfoById(patient.animal.id)
-                .subscribe(
-                  response => {
-                    let client = response["data"]["client"];
-                    this.clientNames[patient.animal.id] = client.firstName + " " + client.lastName;
-                  }
-                );
-            }
-          )
+          if (response["status"] === "OK") {
+            this.patientsCount = response["data"];
+
+            this.setPage(1);
+          } else {
+            console.log(response["error"]);
+          }
+        }
+      );
+  }
+
+  setPage(page: number): void {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.patientsCount, page);
+
+    this.patientService.getLimit(this.pager.currentPage - 1, this.pager.amount)
+      .subscribe(
+        response => {
+          if (response["status"] === "OK") {
+            this.pagedPatients = response["data"];
+          } else {
+            console.log(response["error"]);
+          }
         }
       );
   }

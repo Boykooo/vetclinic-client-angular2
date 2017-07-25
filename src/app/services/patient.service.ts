@@ -61,4 +61,32 @@ export class PatientService extends GenericService<Patient, number> {
         }
       );
   }
+
+  getCount(): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/count/',
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
+
+  getLimit(startPage: number, amount: number): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/page/' + startPage + '/' + amount + '/',
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
 }

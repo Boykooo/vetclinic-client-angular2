@@ -15,6 +15,7 @@ import {EmployeeModule} from "./employee-module";
 import {ContactsComponent} from "../main/welcome/staticPages/contacts/contacts.component";
 import {IssueComponent} from "../main/issue/issue.component";
 import {IssueService} from "../services/issue.service";
+import {PagerService} from "../services/pager-service.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {IssueService} from "../services/issue.service";
     NavigationModule,
     EmployeeModule
   ],
-  providers: [AuthService, IssueService],
+  providers: [AuthService, IssueService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
