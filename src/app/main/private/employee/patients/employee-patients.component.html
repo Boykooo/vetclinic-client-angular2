@@ -1,5 +1,11 @@
 <navigation></navigation>
 
+<label>Choose a browser from this list:
+  <input id='input' type='text' #val list="browsers" name="myBrowser" (keyup.enter)="onSelect(val)" (keyup)="onInput(val)"/></label>
+<datalist id="browsers">
+    <option *ngFor="let c of clients" (value)="c" [ngValue]="c"> {{c}} </option>
+</datalist>
+
 <table class="table table-striped table-bordered">
   <thead>
   <tr>

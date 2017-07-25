@@ -5,6 +5,9 @@ import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
 import {forEach} from "@angular/router/src/utils/collection";
 import {Router} from "@angular/router";
+import {Client} from "../../../../entities/client";
+
+import * as _ from "lodash";
 
 
 @Component({
@@ -16,6 +19,10 @@ export class EmployeePatientsComponent implements OnInit {
 
   patients: Patient[];
   clientNames = {};
+
+  selectedClient: any;
+
+  clients = ["asd", "qweqwe", "olololo"];
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
@@ -51,4 +58,20 @@ export class EmployeePatientsComponent implements OnInit {
   getClientName(animalId: number): string {
     return this.clientNames[animalId];
   }
+
+  onInput(inputBox: any) {
+
+    for (let client of this.clients) {
+      if ((_.isEqual(client, inputBox.value))) {
+        return;
+      }
+    }
+
+    console.log(inputBox.value);
+  }
+
+  onSelect(inputBox: any) {
+    console.log("select", inputBox.value);
+  }
+
 }
