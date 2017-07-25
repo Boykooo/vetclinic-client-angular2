@@ -3,11 +3,11 @@ import {Patient} from "../../../../entities/patient";
 import {PatientService} from "../../../../services/patient.service";
 import {EmployeeService} from "../../../../services/employee.service";
 import {AnimalService} from "../../../../services/animal.service";
-import {forEach} from "@angular/router/src/utils/collection";
 import {Router} from "@angular/router";
-import {Client} from "../../../../entities/client";
 
 import * as _ from "lodash";
+import {EsService} from "../../../../services/es.service";
+import {EsPatient} from "../../../../entities/es-patient";
 
 
 @Component({
@@ -20,13 +20,13 @@ export class EmployeePatientsComponent implements OnInit {
   patients: Patient[];
   clientNames = {};
 
-  selectedClient: any;
 
-  clients = ["asd", "qweqwe", "olololo"];
+  esPatients: EsPatient[];
 
   constructor(private patientService: PatientService,
               private employeeService: EmployeeService,
               private animalService: AnimalService,
+              private esService: EsService,
               private router: Router) {
   }
 
@@ -49,6 +49,18 @@ export class EmployeePatientsComponent implements OnInit {
           )
         }
       );
+
+    this.esService.getEmployeePatients()
+      .subscribe(
+        response => {
+          if (response["status"] === "OK") {
+            console.log("asd", response);
+            this.esPatients = response["data"];
+          } else {
+            console.log(response["error"]);
+          }
+        }
+      )
   }
 
   showDetails(patient: Patient) {
@@ -61,17 +73,21 @@ export class EmployeePatientsComponent implements OnInit {
 
   onInput(inputBox: any) {
 
-    for (let client of this.clients) {
-      if ((_.isEqual(client, inputBox.value))) {
+    for (let esPatient of this.esPatients) {
+      if ((_.isEqual(esPatient.clientName, inputBox.value))) {
         return;
       }
     }
 
-    console.log(inputBox.value);
+    // this.esService.searchByPrefix(inputBox.value)
+    //   .subscribe(
+    //     response => {
+    //       this.esPatients = response["data"];
+    //     }
+    //   )
   }
 
   onSelect(inputBox: any) {
     console.log("select", inputBox.value);
   }
-
 }
