@@ -92,12 +92,12 @@ export class GenericService<Entity, PK> {
       );
   }
 
-  deleteEntity(key: PK): void {
+  deleteEntity(key: PK): any {
     this.refreshToken();
 
-    this.http
+    return this.http
       .delete(this.pathToApi + '/' + key + '/',
-        this.headers,
+        this.options,
       )
       .map(
         response => {

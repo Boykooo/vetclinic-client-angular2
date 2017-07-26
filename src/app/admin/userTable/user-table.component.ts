@@ -8,30 +8,56 @@ import {ClientService} from "../../services/client.service";
   providers: [ClientService]
 })
 
-export class UserTableComponent implements OnInit {
-  users: Client[] = [];
-  user: Client = new Client();
+export class ClientTableComponent implements OnInit {
+  clients: Client[] = [];
+  client: Client = new Client();
 
   constructor(private userService: ClientService) {
   }
 
   ngOnInit(): void {
     this.userService.getAll()
-      .subscribe(users => this.users = users);
+      .subscribe(
+        response => {
+          if (response["status"] === "OK") {
+            this.clients = response["data"];
+          } else {
+            console.log(response["error"])
+          }
+        }
+      );
   }
 
   addUser(): void {
-    this.userService.addEntity(this.user);
-    //TODO: subscribe
+    this.userService.addEntity(this.client)
+      .subscribe(
+        response => {
+          if (response["status"] !== "OK") {
+            console.log(response["error"])
+          }
+        }
+      )
   }
 
   updateUser() {
-    this.userService.updateEntity(this.user);
-    //TODO: subscribe
+    this.userService.updateEntity(this.client)
+      .subscribe(
+        response => {
+          if (response["status"] !== "OK") {
+            console.log(response["error"])
+          }
+        }
+      )
   }
 
   deleteUser() {
-    this.userService.deleteEntity(this.user.email);
-    //TODO: subscribe
+    this.userService.deleteEntity(this.client.email)
+      .subscribe(
+        response => {
+          if (response["status"] !== "OK") {
+            console.log(response["error"])
+          }
+        }
+      )
   }
 }
