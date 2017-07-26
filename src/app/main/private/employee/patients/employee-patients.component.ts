@@ -9,6 +9,8 @@ import {PagerService} from "../../../../services/pager-service.service";
 import * as _ from "lodash";
 import {EsService} from "../../../../services/es.service";
 import {EsPatient} from "../../../../entities/es-patient";
+import {Client} from "../../../../entities/client";
+import {Animal} from "../../../../entities/animal";
 
 
 @Component({
@@ -45,8 +47,8 @@ export class EmployeePatientsComponent implements OnInit {
         response => {
           if (response["status"] === "OK") {
             this.patientsCount = response["data"];
-
             this.setPage(1);
+
           } else {
             console.log(response["error"]);
           }
@@ -57,8 +59,9 @@ export class EmployeePatientsComponent implements OnInit {
       .subscribe(
         response => {
           if (response["status"] === "OK") {
-            console.log("asd", response);
             this.esPatients = response["data"];
+
+
           } else {
             console.log(response["error"]);
           }
@@ -78,6 +81,20 @@ export class EmployeePatientsComponent implements OnInit {
         response => {
           if (response["status"] === "OK") {
             this.pagedPatients = response["data"];
+
+            for (let patient of this.pagedPatients) {
+              this.animalService.getInfoById(patient.animal.id)
+                .subscribe(
+                  response => {
+                    if (response["status"] === "OK") {
+                      let animal: Animal = response["data"];
+                      this.clientNames[animal.id] = animal.client.firstName + " " + animal.client.lastName;
+                    } else {
+                      console.log(response["error"])
+                    }
+                  }
+                )
+            }
           } else {
             console.log(response["error"]);
           }
