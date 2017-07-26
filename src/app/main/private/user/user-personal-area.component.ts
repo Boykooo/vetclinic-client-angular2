@@ -26,8 +26,11 @@ export class UserPersonalAreaComponent implements OnInit {
 
     this.clientService.getInfo().subscribe(
       response => {
-        this.client = response;
-        console.log(response);
+        if (response["status"] === "OK") {
+          this.client = response["data"];
+        } else {
+          console.log(response["error"]);
+        }
       }
     );
 
@@ -44,7 +47,6 @@ export class UserPersonalAreaComponent implements OnInit {
   }
 
   showDetails(): void {
-    console.log(this.lastIssue);
     this.router.navigate(['/issue', this.lastIssue.issueId]);
   }
 }

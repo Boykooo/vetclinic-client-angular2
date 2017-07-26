@@ -23,8 +23,12 @@ export class UserPetsComponent implements OnInit {
     this.animal = new Animal();
 
     this.animalService.getAll().subscribe(
-      animals => {
-        this.animals = animals;
+      response => {
+        if (response["status"] === "OK") {
+          this.animals = response["data"];
+        } else {
+          console.log(response["error"]);
+        }
       }
     );
   }
@@ -37,7 +41,6 @@ export class UserPetsComponent implements OnInit {
     this.animalService.addEntity(this.animal)
       .subscribe(
         response => {
-          console.log();
           if (response.status === "OK" && formData.get('file') !== 'null') {
             this.animalService.uploadImage(response.data, formData);
           }

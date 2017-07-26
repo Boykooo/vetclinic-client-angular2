@@ -72,7 +72,7 @@ export class PetManagerComponent implements OnInit {
             this.animalService.updateImage(this.animal.id, formData)
               .subscribe(
                 response => {
-                  if (response.status != "OK") {
+                  if (response.status !== "OK") {
                     console.log(response.error);
                   }
                 }
