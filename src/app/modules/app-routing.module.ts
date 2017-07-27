@@ -5,10 +5,10 @@ import {WelcomeComponent} from "../main/welcome/welcome.component";
 import {EmployeeTableComponent} from "../admin/employeeTable/employee-table.component";
 import {AboutComponent} from "../main/welcome/staticPages/about/about.component";
 import {AdminAuthComponent} from "../admin/admin-auth.component";
-import {UserPersonalAreaComponent} from "../main/private/user/user-personal-area.component";
-import {UserPetsComponent} from "../main/private/user/pets/user-pets.component";
+import {ClientPersonalAreaComponent} from "../main/private/client/client-personal-area.component";
+import {ClientPetsComponent} from "../main/private/client/pets/client-pets.component";
 import {EmployeePersonalAreaComponent} from "../main/private/employee/employee-personal-area.component";
-import {PetManagerComponent} from "../main/private/user/pets/petManager/pet-manager.component";
+import {PetManagerComponent} from "../main/private/client/pets/petManager/pet-manager.component";
 import {DashboardComponent} from "../main/private/employee/dashboard/dashboard.component";
 import {EmployeePatientsComponent} from "../main/private/employee/patients/employee-patients.component";
 import {PatientManagerComponent} from "../main/private/employee/patients/patientManager/patient-manager.component";
@@ -22,9 +22,9 @@ const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
-  {path: 'client', component: UserPersonalAreaComponent},
+  {path: 'client', component: ClientPersonalAreaComponent},
   {path: 'employee', component: EmployeePersonalAreaComponent},
-  {path: 'client/pets', component: UserPetsComponent},
+  {path: 'client/pets', component: ClientPetsComponent},
   {path: 'client/pets/:id', component: PetManagerComponent},
   {path: 'employee/dashboard', component: DashboardComponent},
   {path: 'employee/patients', component: EmployeePatientsComponent},

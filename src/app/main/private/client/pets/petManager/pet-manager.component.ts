@@ -110,5 +110,4 @@ export class PetManagerComponent implements OnInit {
   showIssueDetails(issueId: number): void {
     this.router.navigate(['/issue', issueId]);
   }
-
 }

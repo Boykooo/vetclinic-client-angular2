@@ -5,15 +5,15 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'user-pets',
-  templateUrl: './user-pets.component.html'
+  templateUrl: './client-pets.component.html'
 })
 
-export class UserPetsComponent implements OnInit {
+export class ClientPetsComponent implements OnInit {
 
-  public animals: Animal[];
-  public animal: Animal;
-
+  animals: Animal[];
+  animal: Animal;
   @ViewChild('fileInput') inputEl: ElementRef;
+  pagedAnimals: Animal[];
 
   constructor(private animalService: AnimalService,
               private router: Router) {

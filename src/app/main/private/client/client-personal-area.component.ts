@@ -7,10 +7,10 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'user-personal-area',
-  templateUrl: './user-personal-area.component.html'
+  templateUrl: './client-personal-area.component.html'
 })
 
-export class UserPersonalAreaComponent implements OnInit {
+export class ClientPersonalAreaComponent implements OnInit {
   client: Client;
   lastIssue: IssueInfo;
 

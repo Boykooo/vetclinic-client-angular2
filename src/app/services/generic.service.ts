@@ -106,6 +106,27 @@ export class GenericService<Entity, PK> {
       );
   }
 
+  getPage(startPage: number, amount: number): any {
+    this.refreshToken();
+
+    return this.http.get(
+      this.pathToApi + '/page/' + startPage + '/' + amount + '/',
+      this.options
+    )
+      .map(
+        response => {
+          return response.json()
+        }
+      );
+  }
+
+  getCount(): any {
+    return this.http.get(
+      this.pathToApi + "/count/",
+      this.options
+    )
+  }
+
   refreshToken(): void {
 
     this.headers = new Headers({'X-Auth-Token': this.authService.getToken()});
