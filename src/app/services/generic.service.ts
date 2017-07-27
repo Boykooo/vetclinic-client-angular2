@@ -121,10 +121,15 @@ export class GenericService<Entity, PK> {
   }
 
   getCount(): any {
+    this.refreshToken();
+
     return this.http.get(
-      this.pathToApi + "/count/",
+      this.pathToApi + "/count",
       this.options
     )
+      .map(
+        response => response.json()
+      )
   }
 
   refreshToken(): void {

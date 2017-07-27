@@ -6,32 +6,55 @@
 
 <h2>Ваши питомцы</h2>
 
-<div *ngFor="let currAnimal of animals"
-     class="col-md-6">
+<div class="container-fluid">
+  <div *ngFor="let currAnimal of pagedAnimals"
+       class="col-md-6">
 
-  <div class="panel panel-default text-center">
-    <div class="panel-heading text-center">
-      <h4> {{currAnimal.name}} </h4>
-    </div>
-
-    <div class="panel-body" style="font-size: 16px;">
-      Возраст: {{currAnimal.age}} <br/>
-      Дата регистрации: {{currAnimal.regDate}} <br/>
-      Статус : {{getStatus(currAnimal.ill)}}
-      <div class="panel panel-default">
-        <div class="panel-body" style="overflow-wrap: break-word;">
-          {{currAnimal.description}}
-        </div>
+    <div class="panel panel-default text-center">
+      <div class="panel-heading text-center">
+        <h4> {{currAnimal.name}} </h4>
       </div>
-      <img src="http://localhost:8080/images/animal/{{currAnimal.id}}"
-           alt="Изображение отсутствует"
-           width="140" height="120">
-      <br/>
-      <button class="btn btn-primary" (click)="showDetails(currAnimal)">
-        Подробнее
-      </button>
+
+      <div class="panel-body" style="font-size: 16px;">
+        Возраст: {{currAnimal.age}} <br/>
+        Дата регистрации: {{currAnimal.regDate}} <br/>
+        Статус : {{getStatus(currAnimal.ill)}}
+        <div class="panel panel-default">
+          <div class="panel-body" style="overflow-wrap: break-word;">
+            {{currAnimal.description}}
+          </div>
+        </div>
+        <img src="http://localhost:8080/images/animal/{{currAnimal.id}}"
+             alt="Изображение отсутствует"
+             width="140" height="120">
+        <br/>
+        <button class="btn btn-primary" (click)="showDetails(currAnimal)">
+          Подробнее
+        </button>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="text-center" style="margin-top: 30px">
+  <!-- pager -->
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+      <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.currentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+      <a (click)="setPage(pager.totalPages)">Last</a>
+    </li>
+  </ul>
 </div>
 
 <div class="modal fade" id="addModal" role="dialog" aria-hidden="true">
